@@ -19,7 +19,7 @@ class Member(models.Model):
         return self.last_name + ' ' + self.first_name
 
     def get_absolute_url(self):
-        return reverse('thanks')
+        return reverse('test')
 
 
 
@@ -59,4 +59,4 @@ class Duty(models.Model):
         return str(self.date) + ' - ' + str(self.member)
 
     def get_absolute_url(self):
-        return reverse('thanks')
+        return reverse('test')

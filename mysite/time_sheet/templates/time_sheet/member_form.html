@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title_block %}
+Member
+{% endblock %}
+{% block content_block %}
+
+<div class="jumbotron">
+  <h1>
+    {% if not form.instance.pk %}
+    Új tag
+    {% else %}
+    Tag módosítása: {{member.first_name}} {{member.last_name}}
+    {% endif %}
+  </h1>
+<form method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">Kész</button>
+  {% endbuttons %}
+</form>
+{% endblock %}

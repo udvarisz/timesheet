@@ -19,7 +19,7 @@ class Member(models.Model):
         return self.last_name + ' ' + self.first_name
 
     def get_absolute_url(self):
-        return reverse('test')
+        return reverse_lazy('test')
 
 
 
@@ -38,7 +38,7 @@ class Duty(models.Model):
 
     kms = models.PositiveSmallIntegerField(default=0, verbose_name= ('Megtett kilométerek'))
 
-    plate = models.CharField(max_length=6, verbose_name= ('Rendszám'), blank=True, null=True)
+    plate = models.ForeignKey('time_sheet.Car', on_delete = models.CASCADE, verbose_name= ('Rendszám'), blank=True, null=True)
 
     help = models.PositiveSmallIntegerField(default=0, verbose_name= ('Segítségnyújtás (fő)'))
 
@@ -59,4 +59,17 @@ class Duty(models.Model):
         return str(self.date) + ' - ' + str(self.member)
 
     def get_absolute_url(self):
-        return reverse('test')
+        return reverse_lazy('test')
+
+class Car(models.Model):
+    fuel_types = (('B','Benzin'),('D','Gázolaj'),('G','Gáz'))
+    car_type = models.CharField(max_length=150, verbose_name= ('Típus'), blank=True, null=True)
+    car_plate = models.CharField(max_length=6, verbose_name= ('Rendszám'), unique=True)
+    fuel_type = models.CharField(max_length=1, choices = fuel_types, default='O',verbose_name= ('Üzemanyag típusa'))
+    ccm = models.PositiveSmallIntegerField(verbose_name= ('Lökettérfogat'))
+
+    def __str__(self):
+        return self.car_plate
+
+    def get_absolute_url(self):
+        return reverse_lazy('test')

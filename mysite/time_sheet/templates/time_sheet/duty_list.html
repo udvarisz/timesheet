@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Tagok
+{% endblock %}
+{% block content_block %}
+<div class='jumbotron'>
+  <h1>Szolgálatok listája</h1>
+</div>
+
+<div class="container">
+<a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
+
+  <div class="container member-list">
+
+<ul>
+  {% for duty in duty_list %}
+  <li>{{member.pk}} : {{duty.date}} {{duty.member}}<br>
+  <a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}" class="btn btn-success">Szolgálat részletei</a></li>
+  {% endfor %}
+  </ul>
+</div>
+</div>
+{% endblock %}

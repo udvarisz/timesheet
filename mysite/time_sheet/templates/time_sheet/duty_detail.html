@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Szolgálat
+{% endblock %}
+{% block content_block %}
+<div class='jumbotron'>
+  <h1>{{duty.date}}  {{duty.member}} részletei</h1>
+</div>
+
+<div class="container">
+
+  <div class="container member-list">
+
+  <ul>
+<li><strong>Szolgálat típusa: </strong>{{duty.get_duty_type_display}}</li>
+<li><strong>Szolgálati órák száma: </strong>{{duty.hours}}</li>
+<li><strong>Parancsnok: </strong>{% if duty.commander %}Igen {% else %}Nem{% endif %}</li>
+{% if duty.commander %}
+<li><strong>Gépjármű rendszáma: </strong>{{duty.plate}}</li>
+<li><strong>Megtett kilométerek: </strong>{{duty.kms}}</li>
+<li><strong>Segítségnyújtás: </strong>{{duty.help}} fő</li>
+<li><strong>Visszatartás: </strong>{% if duty.retention %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Tettenérés: </strong>{% if duty.caught %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Eltűnt személy felkutatása: </strong>{% if duty.missing %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Jelzésadás: </strong>{% if duty.signal %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Egyéb: </strong>{% if duty.other %}Igen {% else %}Nem{% endif %}</li>
+{% endif %}
+  </ul>
+  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-warning">Vissza</a>
+  <a href="{% url 'time_sheet:duty_update' pk=duty.pk %}" class="btn btn-danger">Adatok módosítása</a>
+</div>
+</div>
+{% endblock %}

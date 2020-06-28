@@ -61,13 +61,17 @@ class Duty(models.Model):
         return str(self.date) + ' - ' + str(self.member)
 
     def get_absolute_url(self):
-        return reverse_lazy('test')
+        return reverse_lazy('time_sheet:duty_list')
 
 class Car(models.Model):
     fuel_types = (('B','Benzin'),('D','Gázolaj'),('G','Gáz'))
+
     car_type = models.CharField(max_length=150, verbose_name= ('Típus'), blank=True, null=True)
+
     car_plate = models.CharField(max_length=6, verbose_name= ('Rendszám'), unique=True)
+
     fuel_type = models.CharField(max_length=1, choices = fuel_types, default='O',verbose_name= ('Üzemanyag típusa'))
+
     ccm = models.PositiveSmallIntegerField(verbose_name= ('Lökettérfogat'))
 
     def __str__(self):

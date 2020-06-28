@@ -28,12 +28,19 @@ class MemberDelete(DeleteView):
 #Duty#
 class DutyCreate(CreateView):
     model = models.Duty
-    form_class = forms.DutyForm
+    fields = ('member','duty_type', 'date', 'hours', 'commander', 'kms', 'plate', 'retention', 'caught', 'missing', 'signal', 'other')
 
 
 class DutyUpdate(UpdateView):
     model = models.Duty
-    form_class = forms.DutyUpdateForm
+    # form_class = forms.DutyUpdateForm
+    fields = ('member','duty_type', 'date', 'hours', 'commander', 'kms', 'plate', 'retention', 'caught', 'missing', 'signal', 'other')
+
+class DutyList(ListView):
+    model = models.Duty
+
+class DutyDetail(DetailView):
+    model = models.Duty
 
 #Car#
 class CarCreate(CreateView):

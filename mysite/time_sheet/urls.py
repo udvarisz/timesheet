@@ -17,5 +17,6 @@ urlpatterns = [
     path('duty_detail/<int:pk>/', views.DutyDetail.as_view(), name='duty_detail'),
     path('new_car/',views.CarCreate.as_view(), name='car_create'),
     path('udpate_car/<int:pk>', views.CarUpdate.as_view(), name='car_update'),
-    path('list_car/',views.CarList.as_view(), name='car_list')
+    path('list_car/',views.CarList.as_view(), name='car_list'),
+    path('duty_list_filter/', views.DutyFilterList.as_view(), name='duty_filter_list')
     ]

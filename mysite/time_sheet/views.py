@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from datetime import datetime
 from . import models
 from . import forms
+
 
 #Member#
 class MemberCreate(CreateView):
@@ -38,6 +40,21 @@ class DutyUpdate(UpdateView):
 
 class DutyList(ListView):
     model = models.Duty
+
+    ordering = ['date']
+
+class DutyFilterList(ListView):
+    model = models.Duty
+
+    ordering = ['date']
+
+    def get_queryset(self):
+        start_date = self.request.GET.get('s')
+        end_date = self.request.GET.get('e')
+        print(start_date,end_date)
+        return super().get_queryset().filter(date__range=[start_date, end_date])
+
+
 
 class DutyDetail(DetailView):
     model = models.Duty

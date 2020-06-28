@@ -63,6 +63,9 @@ class Duty(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('time_sheet:duty_list')
 
+
+
+
 class Car(models.Model):
     fuel_types = (('B','Benzin'),('D','Gázolaj'),('G','Gáz'))
 

@@ -30,7 +30,8 @@ class MemberDelete(DeleteView):
 #Duty#
 class DutyCreate(CreateView):
     model = models.Duty
-    fields = ('member','duty_type', 'date', 'hours', 'commander', 'kms', 'plate', 'retention', 'caught', 'missing', 'signal', 'other')
+    form_class = forms.DutyForm
+
 
 
 class DutyUpdate(UpdateView):

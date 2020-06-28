@@ -14,8 +14,8 @@ Tagok
 
 <ul>
   {% for member in member_list %}
-  <li>{{member.pk}} : {{member.last_name}} {{member.first_name}}<br>
-  <a href="{% url 'time_sheet:member_detail' pk=member.pk %}" class="btn btn-success">Tag adatai</a></li>
+  <li><strong>{{member.pk}}.</strong> {{member.last_name}} {{member.first_name}}<br>
+  <a href="{% url 'time_sheet:member_detail' pk=member.pk %}" class="btn btn-success btn-sm">Tag adatai</a></li>
   {% endfor %}
   </ul>
 </div>

@@ -14,8 +14,8 @@ Tagok
 
 <ul>
   {% for duty in duty_list %}
-  <li>{{member.pk}} : {{duty.date}} {{duty.member}}<br>
-  <a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}" class="btn btn-success">Szolgálat részletei</a></li>
+  <li><strong>{{duty.pk}}.</strong> {{duty.date}} {{duty.member}}<br>
+  <a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}" class="btn btn-success btn-sm">Részletek</a></li>
   {% endfor %}
   </ul>
 </div>

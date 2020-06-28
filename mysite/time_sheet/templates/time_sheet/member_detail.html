@@ -17,7 +17,8 @@ Tagok
 <li>Csatlakozás dátuma: {{member.reg_date}}</li>
   </ul>
   <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
-  <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Tag törlése</a>
+  <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>
+  <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Törlés</a>
 </div>
 </div>
 {% endblock %}

@@ -12,6 +12,8 @@ class Member(models.Model):
 
     pmpsz_number = models.CharField(max_length=8, unique=True, blank=True, null=True, verbose_name= ('PMPSZ azonosító'))
 
+    reg_date = models.DateTimeField(default=timezone.now)
+
     class Meta():
         unique_together = ('first_name', 'last_name')
 
@@ -72,4 +74,4 @@ class Car(models.Model):
         return self.car_plate
 
     def get_absolute_url(self):
-        return reverse_lazy('test')
+        return reverse_lazy('time_sheet:car_list')

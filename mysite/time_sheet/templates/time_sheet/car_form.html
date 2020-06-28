@@ -18,6 +18,7 @@ Member
   {% bootstrap_form form %}
   {% buttons %}
   <button type="submit" class="btn btn-primary">Kész</button>
+  <a href="{% url 'time_sheet:car_list' %}" class="btn btn-warning">Mégsem</a>
   {% endbuttons %}
 </form>
 {% endblock %}

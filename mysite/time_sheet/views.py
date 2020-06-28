@@ -13,6 +13,17 @@ class MemberUpdate(UpdateView):
     fields = ('id_number', 'pmpsz_number')
     model = models.Member
 
+class MemberList(ListView):
+    model = models.Member
+
+class MemberDetail(DetailView):
+    model = models.Member
+
+class MemberDelete(DeleteView):
+    model = models.Member
+    success_url = reverse_lazy('time_sheet:member_list')
+
+
 
 #Duty#
 class DutyCreate(CreateView):
@@ -31,4 +42,10 @@ class CarCreate(CreateView):
 
 class CarUpdate(UpdateView):
     fields = ('car_type', 'fuel_type', 'ccm')
-    model = models.Member
+    model = models.Car
+
+class CarList(ListView):
+    model = models.Car
+
+    # def get_queryset(self):
+    #     pass

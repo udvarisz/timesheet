@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Tagok
+{% endblock %}
+{% block content_block %}
+<div class='jumbotron'>
+  <h1>{{member.last_name}}  {{member.first_name}} adatai</h1>
+</div>
+
+<div class="container">
+
+  <div class="container member-list">
+
+  <ul>
+<li>Igazovány szám: {{member.id_number}}</li>
+<li>PMPSZ azonosító: {{member.pmpsz_number}}</li>
+<li>Csatlakozás dátuma: {{member.reg_date}}</li>
+  </ul>
+  <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
+  <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Tag törlése</a>
+</div>
+</div>
+{% endblock %}

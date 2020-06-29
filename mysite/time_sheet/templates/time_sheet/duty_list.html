@@ -8,11 +8,11 @@ Szolgálatok
 
   <h2>Szolgálatok szűrése</h2>
   <p>Jelöld ki az intervallumot:</p>
-  <form class="" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
+  <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
     {% csrf_token %}
-    <input type="datetime" name="s" class="datepicker" placeholder="Kezdődátum">
-    <input type="datetime" name="e" class="datepicker" placeholder="Végdátum">
-    <input type="submit" value="Szűrés" class="btn btn-primary">
+    <input class="form-control" type="datetime" name="s" class="datepicker" placeholder="Kezdődátum">
+    <input class="form-control" type="datetime" name="e" class="datepicker" placeholder="Végdátum">
+    <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
   </form>
 </div>
 

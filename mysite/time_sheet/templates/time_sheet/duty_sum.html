@@ -131,10 +131,10 @@ Szolgálat
   <div id="egyeb">
     <h2>Egyéb adatok</h2>
     <div class="row">
-      <div class="col">
+      <div class="col duty_persons">
         Szolgálatot ellátók tagok
       </div>
-      <div class="col">
+      <div class="col duty_cars">
         Résztvevő autók:
       </div>
       <div class="col">
@@ -145,11 +145,15 @@ Szolgálat
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        {{person}} fő
+      <div class="col duty_persons">
+        {{person}} fő <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#duty_members" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-external-link" aria-hidden="true"></i>
+  </button>
       </div>
-      <div class="col">
-        {{cars}} gépjármű
+      <div class="col duty_cars">
+        {{cars}} gépjármű <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#duty_plates" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-external-link" aria-hidden="true"></i>
+  </button>
       </div>
       <div class="col">
         {{kms}} km
@@ -163,10 +167,36 @@ Szolgálat
 </div>
 
 
+<div id="duty_plates" class="collapse">
+  <hr>
+  <div class="container">
+    <h3>Szolgálatban résztvevő gépjárművek:</h3>
+    <ol>
+      {% for plate in plates  %}
+      <li>{{plate}}</li>
+      {% endfor %}
+    </ol>
+  </div>
 
-<div class="container">
+</div>
+<div id="duty_members" class="collapse">
+  <hr>
+  <div class="container">
+    <h3>Szolgálatban résztvevő személyek:</h3>
+    <ol>
+      {% for member in tag %}
+      <li>{{member}}</li>
+      {% endfor %}
+    </ol>
+
+  </div>
+</div>
+
+<div class="container footer-buttons">
   <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
 
 </div>
+
+
 {% endblock %}

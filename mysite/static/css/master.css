@@ -1,3 +1,14 @@
 .car-list {
   margin-top: 20px;
 }
+
+.footer-buttons {
+  margin-top: 20px;
+}
+
+
+@media print {
+ .d-print-none {
+  display: none!important;
+ }
+}

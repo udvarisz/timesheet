@@ -81,7 +81,7 @@ def duty_sum(request):
     start_date = request.GET.get('s')
     end_date = request.GET.get('e')
     if start_date != None and end_date != None:
-        duties = models.Duty.objects.filter(date__range=[start_date, end_date])
+        duties = models.Duty.objects.filter(date__range=[start_date, end_date]).all()
     else:
         duties = models.Duty.objects.all()
     members = models.Member.objects.all()
@@ -90,9 +90,12 @@ def duty_sum(request):
     persons = []
     dates =[]
     for duty in duties:
-        plates.append(duty.plate)
-        persons.append(duty.member)
-        dates.append(duty.date)
+        if duty.plate not in plates and duty.plate != None:
+            plates.append(duty.plate)
+        if duty.member not in persons:
+            persons.append(duty.member)
+        if duty.date not in dates:
+            dates.append(duty.date)
         kms += duty.kms
         help += duty.help
         if duty.duty_type == 'O':
@@ -129,10 +132,8 @@ def duty_sum(request):
             m += 1
 
     tot_o = o+e
-    cars=len(set(plates))
-    person=len(set(persons))
-    days=len(set(dates))
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':cars,'person':person,'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':days}
+
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons}
 
     return render(request,'time_sheet/duty_sum.html',context=data)

@@ -3,152 +3,170 @@
 Szolgálat
 {% endblock %}
 {% block content_block %}
+
+
 <div class='jumbotron'>
-  <h1>szolgálatok részletei</h1>
+  <h1>Szolgálatok összesítése</h1>
   <p>{{start}} - {{end}}</p>
 </div>
 
 <div class="container">
-  <h2>Tagok</h2>
-  <div class="row">
-    <div class="col">
-      Öszzes aktív tag
+  <div id="tagok">
+    <h2>Tagok</h2>
+    <div class="row">
+      <div class="col">
+        Összes aktív tag
+      </div>
+      <div class="col">
+        OPSZ igazolvánnyal rendelkezik
+      </div>
+      <div class="col">
+        Ifjú polgárőr
+      </div>
+      <div class="col">
+        Kutyás/lovas polgárőr
+      </div>
+      <div class="col">
+        Motoros polgárőr
+      </div>
     </div>
-    <div class="col">
-      OPSZ igazolvánnyal rendelkezik
-    </div>
-    <div class="col">
-      Ifjú polgárőr
-    </div>
-    <div class="col">
-      Kutyás/lovas polgárőr
-    </div>
-    <div class="col">
-      Motoros polgárőr
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{a}}
-    </div>
-    <div class="col">
-      {{id}}
-    </div>
-    <div class="col">
-      {{y}}
-    </div>
-    <div class="col">
-      {{d}}
-    </div>
-    <div class="col">
-      {{m}}
-    </div>
-  </div>
-  <hr>
-  <h2>Szolgálati órák</h2>
-  <div class="row">
-    <div class="col">
-      Rendőrrel közös
-    </div>
-    <div class="col">
-      Rendezvénybiztosítás
-    </div>
-    <div class="col">
-      Önálló (ebből Egyéb)
-    </div>
-    <div class="col">
-      Kutyás
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{r}}
-    </div>
-    <div class="col">
-      {{re}}
-    </div>
-    <div class="col">
-      {{tot_o}} ({{e}})
-    </div>
-    <div class="col">
-      {{k}}
-    </div>
-  </div>
-  <hr>
-  <h2>Esetek</h2>
-  <div class="row">
-    <div class="col">
-      Visszatartás
-    </div>
-    <div class="col">
-      Tettenérés
-    </div>
-    <div class="col">
-      Eltűnt személy felkutatása
-    </div>
-    <div class="col">
-      Jelzésadás
-    </div>
-    <div class="col">
-      Segítségnyújtás (fő)
-    </div>
-    <div class="col">
-      Egyéb eset
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{retention}}
-    </div>
-    <div class="col">
-      {{caught}}
-    </div>
-    <div class="col">
-      {{missing}}
-    </div>
-    <div class="col">
-      {{signal}}
-    </div>
-    <div class="col">
-      {{help}}
-    </div>
-    <div class="col">
-      {{other}}
-    </div>
-  </div>
-  <hr>
-  <h2>Egyéb adatok</h2>
-  <div class="row">
-    <div class="col">
-      Szolgálatot ellátók száma
-    </div>
-    <div class="col">
-      Résztveő autók:
-    </div>
-    <div class="col">
-      Megtett kilométerek:
-    </div>
-    <div class="col">
-      Aktív napok
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{person}}
-    </div>
-    <div class="col">
-      {{cars}}
-    </div>
-    <div class="col">
-      {{kms}}
-    </div>
-    <div class="col">
-      {{days}}
+    <div class="row">
+      <div class="col">
+        {{a}} fő
+      </div>
+      <div class="col">
+        {{id}} fő
+      </div>
+      <div class="col">
+        {{y}} fő
+      </div>
+      <div class="col">
+        {{d}} fő
+      </div>
+      <div class="col">
+        {{m}} fő
+      </div>
     </div>
   </div>
 
+  <hr>
+  <div id="orak">
+    <h2>Szolgálati órák</h2>
+    <div class="row">
+      <div class="col">
+        Rendőrrel közös
+      </div>
+      <div class="col">
+        Rendezvénybiztosítás
+      </div>
+      <div class="col">
+        Önálló (ebből Egyéb)
+      </div>
+      <div class="col">
+        Kutyás
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{r}} óra
+      </div>
+      <div class="col">
+        {{re}} óra
+      </div>
+      <div class="col">
+        {{tot_o}} óra ({{e}} óra)
+      </div>
+      <div class="col">
+        {{k}} óra
+      </div>
+    </div>
+  </div>
 
+  <hr>
+  <div id="esetek">
+    <h2>Esetek</h2>
+    <div class="row">
+      <div class="col">
+        Visszatartás
+      </div>
+      <div class="col">
+        Tettenérés
+      </div>
+      <div class="col">
+        Eltűnt személy felkutatása
+      </div>
+      <div class="col">
+        Jelzésadás
+      </div>
+      <div class="col">
+        Segítségnyújtás (fő)
+      </div>
+      <div class="col">
+        Egyéb eset
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{retention}} alkalom
+      </div>
+      <div class="col">
+        {{caught}} alkalom
+      </div>
+      <div class="col">
+        {{missing}} alkalom
+      </div>
+      <div class="col">
+        {{signal}} alkalom
+      </div>
+      <div class="col">
+        {{help}} fő
+      </div>
+      <div class="col">
+        {{other}} alkalom
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="egyeb">
+    <h2>Egyéb adatok</h2>
+    <div class="row">
+      <div class="col">
+        Szolgálatot ellátók tagok
+      </div>
+      <div class="col">
+        Résztvevő autók:
+      </div>
+      <div class="col">
+        Megtett kilométerek:
+      </div>
+      <div class="col">
+        Aktív napok
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{person}} fő
+      </div>
+      <div class="col">
+        {{cars}} gépjármű
+      </div>
+      <div class="col">
+        {{kms}} km
+      </div>
+      <div class="col">
+        {{days}} nap
+      </div>
+    </div>
+  </div>
 
 </div>
+
+
+
+<div class="container">
+  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
+  <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
+
 </div>
 {% endblock %}

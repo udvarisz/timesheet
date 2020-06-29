@@ -12,12 +12,11 @@ Tagok
 
   <div class="container member-list">
 
-<ul>
+<ol>
   {% for member in member_list %}
-  <li><strong>{{member.pk}}.</strong> {{member.last_name}} {{member.first_name}}<br>
-  <a href="{% url 'time_sheet:member_detail' pk=member.pk %}" class="btn btn-success btn-sm">Tag adatai</a></li>
+  <li><a href="{% url 'time_sheet:member_detail' pk=member.pk %}"> {{member.last_name}} {{member.first_name}}</a></li>
   {% endfor %}
-  </ul>
+</ol>
 </div>
 </div>
 {% endblock %}

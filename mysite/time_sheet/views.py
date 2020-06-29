@@ -18,6 +18,7 @@ class MemberUpdate(UpdateView):
 
 class MemberList(ListView):
     model = models.Member
+    ordering = ['last_name']
 
 class MemberDetail(DetailView):
     model = models.Member
@@ -40,7 +41,7 @@ class DutyUpdate(UpdateView):
 class DutyList(ListView):
     model = models.Duty
 
-    ordering = ['date']
+    ordering = ['-date']
 
 class DutyFilterList(ListView):
     model = models.Duty
@@ -74,7 +75,6 @@ class CarUpdate(UpdateView):
 class CarList(ListView):
     model = models.Car
 
-
 #####
 
 def duty_sum(request):
@@ -85,18 +85,7 @@ def duty_sum(request):
     else:
         duties = models.Duty.objects.all()
     members = models.Member.objects.all()
-    o = 0
-    r = 0
-    re = 0
-    k = 0
-    e = 0
-    kms = 0
-    help = 0
-    retention = 0
-    caught = 0
-    missing = 0
-    signal = 0
-    other = 0
+    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
     persons = []
     dates =[]
@@ -127,16 +116,6 @@ def duty_sum(request):
         if duty.other:
             other +=1
 
-    tot_o = o+e
-    cars=len(set(plates))
-    person=len(set(persons))
-    days=len(set(dates))
-
-    a = 0
-    y = 0
-    d = 0
-    m = 0
-    id = 0
     for member in members:
         if member.id_number:
             id +=1
@@ -148,6 +127,11 @@ def duty_sum(request):
             d += 1
         if member.motor:
             m += 1
+
+    tot_o = o+e
+    cars=len(set(plates))
+    person=len(set(persons))
+    days=len(set(dates))
 
     data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':cars,'person':person,'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':days}
 

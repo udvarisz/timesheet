@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Szolgálat
+{% endblock %}
+{% block content_block %}
+<div class='jumbotron'>
+  <h1>szolgálatok részletei</h1>
+  <p>{{start}} - {{end}}</p>
+</div>
+
+<div class="container">
+  <h2>Tagok</h2>
+  <div class="row">
+    <div class="col">
+      Öszzes aktív tag
+    </div>
+    <div class="col">
+      OPSZ igazolvánnyal rendelkezik
+    </div>
+    <div class="col">
+      Ifjú polgárőr
+    </div>
+    <div class="col">
+      Kutyás/lovas polgárőr
+    </div>
+    <div class="col">
+      Motoros polgárőr
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{a}}
+    </div>
+    <div class="col">
+      {{id}}
+    </div>
+    <div class="col">
+      {{y}}
+    </div>
+    <div class="col">
+      {{d}}
+    </div>
+    <div class="col">
+      {{m}}
+    </div>
+  </div>
+  <hr>
+  <h2>Szolgálati órák</h2>
+  <div class="row">
+    <div class="col">
+      Rendőrrel közös
+    </div>
+    <div class="col">
+      Rendezvénybiztosítás
+    </div>
+    <div class="col">
+      Önálló (ebből Egyéb)
+    </div>
+    <div class="col">
+      Kutyás
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{r}}
+    </div>
+    <div class="col">
+      {{re}}
+    </div>
+    <div class="col">
+      {{tot_o}} ({{e}})
+    </div>
+    <div class="col">
+      {{k}}
+    </div>
+  </div>
+  <hr>
+  <h2>Esetek</h2>
+  <div class="row">
+    <div class="col">
+      Visszatartás
+    </div>
+    <div class="col">
+      Tettenérés
+    </div>
+    <div class="col">
+      Eltűnt személy felkutatása
+    </div>
+    <div class="col">
+      Jelzésadás
+    </div>
+    <div class="col">
+      Segítségnyújtás (fő)
+    </div>
+    <div class="col">
+      Egyéb eset
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{retention}}
+    </div>
+    <div class="col">
+      {{caught}}
+    </div>
+    <div class="col">
+      {{missing}}
+    </div>
+    <div class="col">
+      {{signal}}
+    </div>
+    <div class="col">
+      {{help}}
+    </div>
+    <div class="col">
+      {{other}}
+    </div>
+  </div>
+  <hr>
+  <h2>Egyéb adatok</h2>
+  <div class="row">
+    <div class="col">
+      Szolgálatot ellátók száma
+    </div>
+    <div class="col">
+      Résztveő autók:
+    </div>
+    <div class="col">
+      Megtett kilométerek:
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{person}}
+    </div>
+    <div class="col">
+      {{cars}}
+    </div>
+    <div class="col">
+      {{kms}}
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+{% endblock %}

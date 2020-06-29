@@ -5,17 +5,27 @@ Szolgálatok
 {% block content_block %}
 <div class='jumbotron'>
   <h1>Szolgálatok listája</h1>
-
+</div>
+<div class="container">
   <h2>Szolgálatok szűrése</h2>
   <p>Jelöld ki az intervallumot:</p>
   <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
     {% csrf_token %}
-    <input class="form-control" type="datetime" name="s" class="datepicker" placeholder="Kezdődátum">
-    <input class="form-control" type="datetime" name="e" class="datepicker" placeholder="Végdátum">
+    <input class="form-control datepicker" type="datetime" name="s" placeholder="Kezdődátum">
+    <input class="form-control datepicker" type="datetime" name="e" placeholder="Végdátum">
+    <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
+  </form>
+  <hr>
+  <h2>Szolgálati összesítő</h2>
+  <p>Jelöld ki az intervallumot:</p>
+  <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
+    {% csrf_token %}
+    <input class="form-control datepicker" type="datetime" name="s" placeholder="Kezdődátum">
+    <input class="form-control datepicker" type="datetime" name="e" placeholder="Végdátum">
     <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
   </form>
 </div>
-
+<hr>
 <div class="container">
   <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
   <div class="container member-list">

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from datetime import date
+from django.db.models import Avg, Sum, Count
 from . import models
 from . import forms
 
@@ -9,10 +10,10 @@ from . import forms
 #Member#
 class MemberCreate(CreateView):
     model = models.Member
-    fields = ('last_name','first_name','id_number', 'pmpsz_number')
+    fields = ('last_name','first_name','id_number', 'pmpsz_number','young', 'dog', 'motor', 'active' )
 
 class MemberUpdate(UpdateView):
-    fields = ('id_number', 'pmpsz_number')
+    fields = ('id_number', 'pmpsz_number', 'young', 'dog', 'motor', 'active')
     model = models.Member
 
 class MemberList(ListView):
@@ -31,8 +32,6 @@ class MemberDelete(DeleteView):
 class DutyCreate(CreateView):
     model = models.Duty
     form_class = forms.DutyForm
-
-
 
 class DutyUpdate(UpdateView):
     model = models.Duty
@@ -58,9 +57,7 @@ class DutyFilterList(ListView):
             end_date = self.request.GET.get('e')
         else:
             end_date = date.today()
-        print(start_date,end_date)
         return super().get_queryset().filter(date__range=[start_date, end_date])
-
 
 
 class DutyDetail(DetailView):
@@ -77,3 +74,81 @@ class CarUpdate(UpdateView):
 
 class CarList(ListView):
     model = models.Car
+
+
+#####
+
+def duty_sum(request):
+    start_date = request.GET.get('s')
+    end_date = request.GET.get('e')
+    if start_date != None and end_date != None:
+        duties = models.Duty.objects.filter(date__range=[start_date, end_date])
+    else:
+        duties = models.Duty.objects.all()
+    members = models.Member.objects.all()
+    o = 0
+    r = 0
+    re = 0
+    k = 0
+    e = 0
+    kms = 0
+    help = 0
+    retention = 0
+    caught = 0
+    missing = 0
+    signal = 0
+    other = 0
+    laf=0
+    mfe=0
+    plates = []
+    persons = []
+    for duty in duties:
+        plates.append(duty.plate)
+        persons.append(duty.member)
+        kms += duty.kms
+        help += duty.help
+        if duty.duty_type == 'O':
+            o += 1
+        elif duty.duty_type == 'R':
+            r += 1
+        elif duty.duty_type == 'Re':
+            re += 1
+        elif duty.duty_type == 'K':
+            k += 1
+        elif duty.duty_type == 'E':
+            e += 1
+        if duty.retention:
+            retention +=1
+        if duty.caught:
+            caught +=1
+        if duty.missing:
+            missing +=1
+        if duty.signal:
+            signal +=1
+        if duty.other:
+            other +=1
+
+    tot_o = o+e
+    cars=len(set(plates))
+    person=len(set(members))
+
+    a = 0
+    y = 0
+    d = 0
+    m = 0
+    id = 0
+    for member in members:
+        if member.id_number:
+            id +=1
+        if member.active:
+            a += 1
+        if member.young:
+            y += 1
+        if member.dog:
+            d += 1
+        if member.motor:
+            m += 1
+
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':cars,'person':person,'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date}
+
+    return render(request,'time_sheet/duty_sum.html',context=data)

@@ -12,7 +12,15 @@ class Member(models.Model):
 
     pmpsz_number = models.CharField(max_length=8, unique=True, blank=True, null=True, verbose_name= ('PMPSZ azonosító'))
 
+    young = models.BooleanField(default=False, verbose_name= ('Ifjú polgárőr'))
+
+    dog = models.BooleanField(default=False, verbose_name= ('Kutyás polgárőr'))
+
+    motor = models.BooleanField(default=False, verbose_name= ('Motoros polgárőr'))
+
     reg_date = models.DateTimeField(default=timezone.now)
+
+    active = models.BooleanField(default=True, verbose_name= ('Aktív tag'))
 
     class Meta():
         unique_together = ('first_name', 'last_name')

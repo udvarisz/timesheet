@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from datetime import datetime
+from datetime import date
 from . import models
 from . import forms
 
@@ -50,8 +50,14 @@ class DutyFilterList(ListView):
     ordering = ['date']
 
     def get_queryset(self):
-        start_date = self.request.GET.get('s')
-        end_date = self.request.GET.get('e')
+        if self.request.GET.get('s') != '':
+            start_date = self.request.GET.get('s')
+        else:
+            start_date = '2020-01-01'
+        if self.request.GET.get('e') != '':
+            end_date = self.request.GET.get('e')
+        else:
+            end_date = date.today()
         print(start_date,end_date)
         return super().get_queryset().filter(date__range=[start_date, end_date])
 
@@ -71,6 +77,3 @@ class CarUpdate(UpdateView):
 
 class CarList(ListView):
     model = models.Car
-
-    # def get_queryset(self):
-    #     pass

@@ -5,19 +5,26 @@ Szolgálatok
 {% block content_block %}
 <div class='jumbotron'>
   <h1>Szolgálatok listája</h1>
+
+  <h2>Szolgálatok szűrése</h2>
+  <p>Jelöld ki az intervallumot:</p>
+  <form class="" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
+    {% csrf_token %}
+    <input type="datetime" name="s" class="datepicker" placeholder="Kezdődátum">
+    <input type="datetime" name="e" class="datepicker" placeholder="Végdátum">
+    <input type="submit" value="Szűrés" class="btn btn-primary">
+  </form>
 </div>
 
 <div class="container">
-<a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
-
+  <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
   <div class="container member-list">
-
-<ul>
-  {% for duty in duty_list %}
-  <li><strong>{{duty.pk}}.</strong> {{duty.date}} {{duty.member}}<br>
-  <a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}" class="btn btn-success btn-sm">Részletek</a></li>
-  {% endfor %}
-  </ul>
-</div>
-</div>
-{% endblock %}
+    <ul>
+      {% for duty in duty_list %}
+      <li><strong>{{duty.pk}}.</strong> {{duty.date}} {{duty.member}}<br>
+        <a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}" class="btn btn-success btn-sm">Részletek</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endblock %}

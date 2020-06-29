@@ -35,8 +35,7 @@ class DutyCreate(CreateView):
 
 class DutyUpdate(UpdateView):
     model = models.Duty
-    # form_class = forms.DutyUpdateForm
-    fields = ('member','duty_type', 'date', 'hours', 'commander', 'kms', 'plate', 'retention', 'caught', 'missing', 'signal', 'other')
+    form_class = forms.DutyForm
 
 class DutyList(ListView):
     model = models.Duty
@@ -98,25 +97,25 @@ def duty_sum(request):
     missing = 0
     signal = 0
     other = 0
-    laf=0
-    mfe=0
     plates = []
     persons = []
+    dates =[]
     for duty in duties:
         plates.append(duty.plate)
         persons.append(duty.member)
+        dates.append(duty.date)
         kms += duty.kms
         help += duty.help
         if duty.duty_type == 'O':
-            o += 1
+            o += duty.hours
         elif duty.duty_type == 'R':
-            r += 1
+            r += duty.hours
         elif duty.duty_type == 'Re':
-            re += 1
+            re += duty.hours
         elif duty.duty_type == 'K':
-            k += 1
+            k += duty.hours
         elif duty.duty_type == 'E':
-            e += 1
+            e += duty.hours
         if duty.retention:
             retention +=1
         if duty.caught:
@@ -130,7 +129,8 @@ def duty_sum(request):
 
     tot_o = o+e
     cars=len(set(plates))
-    person=len(set(members))
+    person=len(set(persons))
+    days=len(set(dates))
 
     a = 0
     y = 0
@@ -149,6 +149,6 @@ def duty_sum(request):
         if member.motor:
             m += 1
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':cars,'person':person,'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':cars,'person':person,'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':days}
 
     return render(request,'time_sheet/duty_sum.html',context=data)

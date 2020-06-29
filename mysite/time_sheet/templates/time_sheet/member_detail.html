@@ -12,9 +12,13 @@ Tagok
   <div class="container member-list">
 
   <ul>
-<li>Igazovány szám: {{member.id_number}}</li>
-<li>PMPSZ azonosító: {{member.pmpsz_number}}</li>
-<li>Csatlakozás dátuma: {{member.reg_date}}</li>
+<li><strong>Igazovány szám: </strong>{{member.id_number}}</li>
+<li><strong>PMPSZ azonosító: </strong>{{member.pmpsz_number}}</li>
+<li><strong>Csatlakozás dátuma: </strong>{{member.reg_date}}</li>
+<li><strong>Ifjú polgárőr: </strong>{% if member.young %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Kutyás polgárőr: </strong>{% if member.dog %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Motoros polgárőr: </strong>{% if member.motor %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Aktív: </strong>{% if member.active %}Igen {% else %}Nem{% endif %}</li>
   </ul>
   <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
   <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>

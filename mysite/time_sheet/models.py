@@ -29,7 +29,7 @@ class Member(models.Model):
         return self.last_name + ' ' + self.first_name
 
     def get_absolute_url(self):
-        return reverse_lazy('test')
+        return reverse_lazy('time_sheet:member_list')
 
 
 

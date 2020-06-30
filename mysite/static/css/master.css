@@ -2,7 +2,7 @@
 	border-bottom:solid 10px;
 }
 
-input {
+input, select {
 	background: transparent !important;
 	border: none !important;
 	border: 2px solid !important;
@@ -106,13 +106,15 @@ input[type="submit"] {
  transition: all .4s ease-in-out;
 }
 
-
+.mb-2 {width: 50%}
 
 
 
 
 
 @media only screen and (max-width: 600px) {
+.mb-2 {width: 100%}
+
   .car-list {
     margin-top: 20px;
   }

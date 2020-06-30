@@ -29,8 +29,8 @@ Szolgálatok
       <input class="form-control datepicker" type="datetime" name="s" placeholder="Kezdődátum">
       <input class="form-control datepicker" type="datetime" name="e" placeholder="Végdátum">
       <div class="form-group">
-    <label for="exampleFormControlSelect1">Szolgálat típusa</label>
-    <select class="form-control" name='t'>
+    <label for="t">Szolgálat típusa:</label>
+    <select class="form-control" name='t' id='t'>
       <option value="all">Minden típus</option>
       <option value="o">Önálló</option>
       <option value="r">Rendőrrel közös</option>
@@ -47,6 +47,7 @@ Szolgálatok
 <div class="container">
 
   <div class="container member-list">
+    <p>Legutóbbi szolgálatok:</p>
     <ol>
       {% for duty in duty_list %}
       <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>

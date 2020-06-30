@@ -1,4 +1,110 @@
+.row {
+	border-bottom:solid 10px;
+}
 
+input {
+	background: transparent !important;
+	border: none !important;
+	border: 2px solid !important;
+	border-radius: 0px !important;
+	box-shadow: none !important;
+	color: #444 !important;
+	font-size: 14px !important;
+	font-weight: 300 !important;
+	line-height: 25px !important;
+	height: 50px !important;
+	margin-bottom: 30px !important;
+	padding: 15px !important;
+	width: 100%;
+	-webkit-transition: all .8s linear;
+	-moz-transition: all .8s linear;
+	-ms-transition: all .8s linear;
+	-o-transition: all .8s linear;
+	transition: all .8s linear;
+}
+input:focus, textarea:focus {
+	border: none 2px solid !important;
+	color: #444 !important;
+	-webkit-transition: all .8s linear;
+	-moz-transition: all .8s linear;
+	-ms-transition: all .8s linear;
+	-o-transition: all .8s linear;
+	transition: all .8s linear;
+}
+textarea {
+	background: transparent !important;
+	border: none !important;
+	border: 2px solid !important;
+	border-radius: 0px !important;
+	box-shadow: none !important;
+	color: #444 !important;
+	font-size: 14px !important;
+	font-weight: 300 !important;
+	line-height: 25px !important;
+	margin-top: 0;
+	padding: 15px !important;
+	resize: none;
+	width: 100%;
+	-webkit-transition: all .8s linear;
+	-moz-transition: all .8s linear;
+	-ms-transition: all .8s linear;
+	-o-transition: all .8s linear;
+	transition: all .8s linear;
+}
+input.send_message {
+	background: none repeat scroll 0 0 #EF4A4A;
+	color: #FFFFFF;
+	cursor: pointer;
+	float: left;
+	font-size: 12px;
+	font-weight: 400;
+	margin: 0;
+	width: 120px;
+}
+input.send_message:hover {
+	background: none repeat scroll 0 0 #262932;
+}
+fieldset {
+	border: 0 none;
+	float: left;
+	padding: 0;
+	position: relative;
+	width: 100%;
+}
+fieldset h1 {
+	color: #000000;
+	font-size: 24px;
+}
+
+.btn
+input[type="submit"] {
+ border-radius: 0px;
+ text-decoration: none;
+ padding: 15px 20px;
+ font-size: 12px;
+ line-height: 19px;
+ text-transform: uppercase;
+ letter-spacing: 4px;
+ -webkit-transition: all .4s ease-in-out;
+ -moz-transition: all .4s ease-in-out;
+ -ms-transition: all .4s ease-in-out;
+ -o-transition: all .4s ease-in-out;
+ transition: all .4s ease-in-out;
+}
+.btn-primary {
+ border-radius: 0px;
+ text-decoration: none;
+ padding: 15px 20px;
+ font-size: 18px;
+ line-height: 25px;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ -webkit-transition: all .4s ease-in-out;
+ -moz-transition: all .4s ease-in-out;
+ -ms-transition: all .4s ease-in-out;
+ -o-transition: all .4s ease-in-out;
+ transition: all .4s ease-in-out;
+}
 
 
 
@@ -15,7 +121,7 @@
     margin-top: 20px;
   }
 
-
+h1,h2 {font-size: 1.2em}
 
 }
 
@@ -24,3 +130,4 @@
  .d-print-none {
   display: none!important;
  }
+}

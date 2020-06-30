@@ -95,8 +95,6 @@ def duty_sum(request):
     else:
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
 
-    print(start_date)
-    print(end_date)
     members = models.Member.objects.all()
     o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []

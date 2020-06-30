@@ -40,8 +40,8 @@ class DutyUpdate(UpdateView):
 
 class DutyList(ListView):
     model = models.Duty
+    queryset = models.Duty.objects.order_by('-date')[:10]
 
-    ordering = ['-date']
 
 class DutyFilterList(ListView):
     model = models.Duty

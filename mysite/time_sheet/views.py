@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from datetime import date
+import datetime
 from django.db.models import Avg, Sum, Count
 from . import models
 from . import forms
@@ -49,14 +49,14 @@ class DutyFilterList(ListView):
     ordering = ['date']
 
     def get_queryset(self):
-        if self.request.GET.get('s') != '':
+        if self.request.GET.get('s') != "":
             start_date = self.request.GET.get('s')
         else:
-            start_date = '2020-01-01'
-        if self.request.GET.get('e') != '':
+            start_date = datetime.date.today().replace(day=1)
+        if self.request.GET.get('e') != "":
             end_date = self.request.GET.get('e')
         else:
-            end_date = date.today()
+            end_date = datetime.date.today()
         return super().get_queryset().filter(date__range=[start_date, end_date])
 
 
@@ -78,19 +78,25 @@ class CarList(ListView):
 #####
 
 def duty_sum(request):
-    start_date = request.GET.get('s')
-    end_date = request.GET.get('e')
-    if request.GET.get('t') !=None:
-        type = request.GET.get('t').title()
-        if start_date != None and end_date != None:
-            duties = models.Duty.objects.filter(date__range=[start_date, end_date ], duty_type__exact=type).all()
-        else:
-            duties = models.Duty.objects.filter(duty_type__exact=type).all()
+    if request.GET.get('s') != "":
+        start_date = request.GET.get('s')
     else:
-        if start_date != None and end_date != None:
-            duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
-        else:
-            duties = models.Duty.objects.all()
+        start_date = datetime.date.today().replace(day=1)
+
+    if request.GET.get('e') != "":
+        end_date = request.GET.get('e')
+    else:
+        end_date = datetime.date.today()
+
+
+    if request.GET.get('t') !="":
+        type = request.GET.get('t').title()
+        duties = models.Duty.objects.filter(date__range=[start_date, end_date ], duty_type__exact=type).all()
+    else:
+        duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
+
+    print(start_date)
+    print(end_date)
     members = models.Member.objects.all()
     o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []

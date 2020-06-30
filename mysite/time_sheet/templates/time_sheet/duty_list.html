@@ -39,7 +39,7 @@ Szolgálatok
   <div class="container member-list">
     <ol>
       {% for duty in duty_list %}
-      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}}</a></li>
+      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
         {% endfor %}
       </ol>
     </div>

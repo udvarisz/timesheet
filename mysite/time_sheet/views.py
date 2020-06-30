@@ -80,10 +80,17 @@ class CarList(ListView):
 def duty_sum(request):
     start_date = request.GET.get('s')
     end_date = request.GET.get('e')
-    if start_date != None and end_date != None:
-        duties = models.Duty.objects.filter(date__range=[start_date, end_date]).all()
+    if request.GET.get('t') !=None:
+        type = request.GET.get('t').title()
+        if start_date != None and end_date != None:
+            duties = models.Duty.objects.filter(date__range=[start_date, end_date ], duty_type__exact=type).all()
+        else:
+            duties = models.Duty.objects.filter(duty_type__exact=type).all()
     else:
-        duties = models.Duty.objects.all()
+        if start_date != None and end_date != None:
+            duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
+        else:
+            duties = models.Duty.objects.all()
     members = models.Member.objects.all()
     o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
@@ -132,7 +139,6 @@ def duty_sum(request):
             m += 1
 
     tot_o = o+e
-
 
     data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons}
 

@@ -66,7 +66,7 @@ class Duty(models.Model):
         unique_together = ('member', 'date', 'duty_type')
 
     def __str__(self):
-        return str(self.date) + ' - ' + str(self.member)
+        return str(self.date) + ' - ' + str(self.member) + ' - ' + str(self.duty_type)
 
     def get_absolute_url(self):
         return reverse_lazy('time_sheet:duty_list')

@@ -16,8 +16,8 @@ Szolgálatok
     <p>Jelöld ki az intervallumot:</p>
     <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
       {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Kezdődátum">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Végdátum">
+      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól">
+      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig">
       <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
     </form>
   </div>
@@ -26,8 +26,8 @@ Szolgálatok
     <p>Jelöld ki az intervallumot:</p>
     <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
       {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Kezdődátum">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Végdátum">
+      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól">
+      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig">
       <div class="form-group">
     <label for="t">Szolgálat típusa:</label>
     <select class="form-control" name='t' id='t'>

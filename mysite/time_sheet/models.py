@@ -12,7 +12,15 @@ class Member(models.Model):
 
     pmpsz_number = models.CharField(max_length=8, unique=True, blank=True, null=True, verbose_name= ('PMPSZ azonosító'))
 
+    young = models.BooleanField(default=False, verbose_name= ('Ifjú polgárőr'))
+
+    dog = models.BooleanField(default=False, verbose_name= ('Kutyás polgárőr'))
+
+    motor = models.BooleanField(default=False, verbose_name= ('Motoros polgárőr'))
+
     reg_date = models.DateTimeField(default=timezone.now)
+
+    active = models.BooleanField(default=True, verbose_name= ('Aktív tag'))
 
     class Meta():
         unique_together = ('first_name', 'last_name')
@@ -21,7 +29,7 @@ class Member(models.Model):
         return self.last_name + ' ' + self.first_name
 
     def get_absolute_url(self):
-        return reverse_lazy('test')
+        return reverse_lazy('time_sheet:member_list')
 
 
 
@@ -58,10 +66,13 @@ class Duty(models.Model):
         unique_together = ('member', 'date', 'duty_type')
 
     def __str__(self):
-        return str(self.date) + ' - ' + str(self.member)
+        return str(self.date) + ' - ' + str(self.member) + ' - ' + str(self.duty_type)
 
     def get_absolute_url(self):
         return reverse_lazy('time_sheet:duty_list')
+
+
+
 
 class Car(models.Model):
     fuel_types = (('B','Benzin'),('D','Gázolaj'),('G','Gáz'))

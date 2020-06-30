@@ -13,11 +13,14 @@ Szolgálat
     Szolgálat módosítása: {{duty.date}} {{duty.member}}
     {% endif %}
   </h1>
-<form method="POST">
+<form method="POST" autocomplete="off">
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}
-  <button type="submit" class="btn btn-primary">Kész</button>
+  <button type="submit" class="btn btn-primary">Mentés</button>
+  {% if form.instance.pk %}
+  <a class="btn btn-secondary" href="{% url 'time_sheet:duty_list' %}">Mégsem</a>
+  {% endif %}
   {% endbuttons %}
 </form>
 

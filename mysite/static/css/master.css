@@ -1,6 +1,5 @@
-.car-list {
-  margin-top: 20px;
-}
+
+
 
 
 
@@ -8,8 +7,20 @@
 
 
 @media only screen and (max-width: 600px) {
-  
+  .car-list {
+    margin-top: 20px;
+  }
+
+  .footer-buttons {
+    margin-top: 20px;
+  }
 
 
 
 }
+
+
+@media print {
+ .d-print-none {
+  display: none!important;
+ }

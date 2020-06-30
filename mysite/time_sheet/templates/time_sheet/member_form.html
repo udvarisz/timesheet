@@ -13,7 +13,7 @@ Member
     Tag módosítása: {{member.first_name}} {{member.last_name}}
     {% endif %}
   </h1>
-<form method="POST">
+<form method="POST" autocomplete="off">
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}

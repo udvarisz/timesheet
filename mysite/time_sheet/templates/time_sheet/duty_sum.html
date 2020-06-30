@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Szolgálat
+{% endblock %}
+{% block content_block %}
+
+
+<div class='jumbotron'>
+  <h1>Szolgálatok összesítése</h1>
+  <p>{{start}} - {{end}}</p>
+</div>
+
+<div class="container">
+  <div id="tagok">
+    <h2>Tagok</h2>
+    <div class="row">
+      <div class="col">
+        Összes aktív tag
+      </div>
+      <div class="col">
+        OPSZ igazolvánnyal rendelkezik
+      </div>
+      <div class="col">
+        Ifjú polgárőr
+      </div>
+      <div class="col">
+        Kutyás/lovas polgárőr
+      </div>
+      <div class="col">
+        Motoros polgárőr
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{a}} fő
+      </div>
+      <div class="col">
+        {{id}} fő
+      </div>
+      <div class="col">
+        {{y}} fő
+      </div>
+      <div class="col">
+        {{d}} fő
+      </div>
+      <div class="col">
+        {{m}} fő
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="orak">
+    <h2>Szolgálati órák</h2>
+    <div class="row">
+      <div class="col">
+        Rendőrrel közös
+      </div>
+      <div class="col">
+        Rendezvénybiztosítás
+      </div>
+      <div class="col">
+        Önálló (ebből Egyéb)
+      </div>
+      <div class="col">
+        Kutyás
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{r}} óra
+      </div>
+      <div class="col">
+        {{re}} óra
+      </div>
+      <div class="col">
+        {{tot_o}} óra ({{e}} óra)
+      </div>
+      <div class="col">
+        {{k}} óra
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="esetek">
+    <h2>Esetek</h2>
+    <div class="row">
+      <div class="col">
+        Visszatartás
+      </div>
+      <div class="col">
+        Tettenérés
+      </div>
+      <div class="col">
+        Eltűnt személy felkutatása
+      </div>
+      <div class="col">
+        Jelzésadás
+      </div>
+      <div class="col">
+        Segítségnyújtás (fő)
+      </div>
+      <div class="col">
+        Egyéb eset
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{retention}} alkalom
+      </div>
+      <div class="col">
+        {{caught}} alkalom
+      </div>
+      <div class="col">
+        {{missing}} alkalom
+      </div>
+      <div class="col">
+        {{signal}} alkalom
+      </div>
+      <div class="col">
+        {{help}} fő
+      </div>
+      <div class="col">
+        {{other}} alkalom
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="egyeb">
+    <h2>Egyéb adatok</h2>
+    <div class="row">
+      <div class="col duty_persons">
+        Szolgálatot ellátók tagok
+      </div>
+      <div class="col duty_cars">
+        Résztvevő autók:
+      </div>
+      <div class="col">
+        Megtett kilométerek:
+      </div>
+      <div class="col">
+        Aktív napok
+      </div>
+    </div>
+    <div class="row">
+      <div class="col duty_persons">
+        {{person}} fő <a data-toggle="collapse" data-target="#duty_members" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+  </a>
+      </div>
+      <div class="col duty_cars">
+        {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty_plates" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+  </a>
+      </div>
+      <div class="col">
+        {{kms}} km
+      </div>
+      <div class="col">
+        {{days}} nap
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="duty_plates" class="collapse">
+  <hr>
+  <div class="container">
+    <h3>Szolgálatban résztvevő gépjárművek:</h3>
+    <ol>
+      {% for plate in plates  %}
+      <li>{{plate}}</li>
+      {% endfor %}
+    </ol>
+  </div>
+
+</div>
+<div id="duty_members" class="collapse">
+  <hr>
+  <div class="container">
+    <h3>Szolgálatban résztvevő személyek:</h3>
+    <ol>
+      {% for member in tag %}
+      <li>{{member}}</li>
+      {% endfor %}
+    </ol>
+
+  </div>
+</div>
+
+<div class="container footer-buttons">
+  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
+  <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
+
+</div>
+
+
+{% endblock %}

@@ -5,29 +5,6 @@
     padding: 10px;
 }
 
-input, select {
-	background: transparent !important;
-	border: none !important;
-	border: 2px solid !important;
-	border-radius: 0px !important;
-	box-shadow: none !important;
-	color: #444 !important;
-	font-size: 14px !important;
-	font-weight: 300 !important;
-	line-height: 25px !important;
-	height: 50px !important;
-	margin-bottom: 30px !important;
-	padding: 15px !important;
-	width: 100%;
-	-webkit-transition: all .8s linear;
-	-moz-transition: all .8s linear;
-	-ms-transition: all .8s linear;
-	-o-transition: all .8s linear;
-	transition: all .8s linear;
-}
-
-
-
 .szures-btn {display: block;margin-top: 10px;}
 
 /*Buttons*/
@@ -67,6 +44,7 @@ line-height: 0 !important;
 	-o-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
 }
+.container {margin-bottom: 20px}
 .btn-primary {background-color: #5d91cd;border-color: #5d91cd}
 .footer-buttons {margin-top: 10px}
 

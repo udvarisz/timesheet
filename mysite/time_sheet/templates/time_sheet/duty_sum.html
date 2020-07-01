@@ -147,49 +147,64 @@ Szolgálat
     </div>
     <div class="row">
       <div class="col duty_persons">
-        {{person}} fő <a data-toggle="collapse" data-target="#duty_members" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-  </a>
+        {{person}} fő <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapse">
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </a>
       </div>
       <div class="col duty_cars">
-        {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty_plates" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-  </a>
+        {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </a>
       </div>
       <div class="col">
         {{kms}} km
       </div>
       <div class="col">
-        {{days}} nap
+        {{days}} nap <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </div>
 
 </div>
+<div class="container">
 
 
-<div id="duty_plates" class="collapse">
-  <hr>
-  <div class="container">
-    <h3>Szolgálatban résztvevő gépjárművek:</h3>
-    <ol>
-      {% for plate in plates  %}
-      <li>{{plate}}</li>
-      {% endfor %}
-    </ol>
-  </div>
+  <div class="row collapse" id='duty-collapse'>
 
-</div>
-<div id="duty_members" class="collapse">
-  <hr>
-  <div class="container">
-    <h3>Szolgálatban résztvevő személyek:</h3>
-    <ol>
-      {% for member in tag %}
-      <li>{{member}}</li>
-      {% endfor %}
-    </ol>
+    <div id="duty_members" class="col md-4 sm-1">
+      <div class="container">
+        <h3>Szolgálatban résztvevő személyek:</h3>
+        <ol>
+          {% for member in tag %}
+          <li>{{member}}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
 
+    <div id="duty_plates" class="col md-4 sm-1">
+      <div class="col md-4 sm-1">
+        <h3>Szolgálatban résztvevő gépjárművek:</h3>
+        <ol>
+          {% for plate in plates  %}
+          <li>{{plate}}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+
+    <div id="duty_dates" class="col md-4 sm-1">
+      <div class="container">
+        <h3>Aktív napok:</h3>
+        <ol>
+          {% for day in dates %}
+          <li>{{day}}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
   </div>
 </div>
 

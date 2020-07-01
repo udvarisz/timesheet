@@ -26,6 +26,8 @@ input, select {
 	transition: all .8s linear;
 }
 
+
+
 .szures-btn {display: block;margin-top: 10px;}
 
 /*Buttons*/
@@ -65,6 +67,7 @@ line-height: 0 !important;
 	-o-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
 }
+.btn-primary {background-color: #5d91cd;border-color: #5d91cd}
 .footer-buttons {margin-top: 10px}
 
 p {
@@ -81,6 +84,7 @@ h1, h2 {font-size: 1.4rem}
   .car-list {
     margin-top: 20px;
   }
+  li a {font-size: .85rem}
 
   .footer-buttons {
     margin-top: 20px;

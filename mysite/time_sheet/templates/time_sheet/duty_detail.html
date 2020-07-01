@@ -27,7 +27,9 @@ Szolgálat
 {% endif %}
   </ul>
   <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-warning">Vissza</a>
+  {% if user.is_superuser %}
   <a href="{% url 'time_sheet:duty_update' pk=duty.pk %}" class="btn btn-danger">Adatok módosítása</a>
+  {% endif %}
 </div>
 </div>
 {% endblock %}

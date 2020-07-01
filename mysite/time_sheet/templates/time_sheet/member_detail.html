@@ -21,8 +21,10 @@ Tagok
 <li><strong>Aktív: </strong>{% if member.active %}Igen {% else %}Nem{% endif %}</li>
   </ul>
   <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
+  {% if user.is_superuser %}
   <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>
   <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Törlés</a>
+  {% endif %}
 </div>
 </div>
 {% endblock %}

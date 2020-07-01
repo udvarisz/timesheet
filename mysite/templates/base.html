@@ -52,11 +52,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><span class="nav-link disabled">{{user.username}}</span></a></li>
-          <li><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+          <li><a class="nav-link" href="{% url 'accounts:logout' %}">Kijelentkezés <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Bejelentkezés <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
         </ul>
         {% endif %}
 

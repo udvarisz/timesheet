@@ -44,7 +44,7 @@ line-height: 0 !important;
 	-o-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
 }
-.container {margin-bottom: 20px}
+.container {margin-bottom: 20px;margin-top: 20px;}
 .btn-primary {background-color: #5d91cd;border-color: #5d91cd}
 .footer-buttons {margin-top: 10px}
 

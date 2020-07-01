@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'bootstrap4',
+    'accounts',
     'time_sheet',
 ]
 
@@ -124,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-LOGIN_REDIRECT_URL ='test'
+LOGIN_REDIRECT_URL ='home'
 LOGOUT_REDIRECT_URL ='thanks'
 
 INTERNAL_IPS = [

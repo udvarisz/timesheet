@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 import datetime
 from django.db.models import Avg, Sum, Count
@@ -8,42 +10,51 @@ from . import forms
 
 
 #Member#
-class MemberCreate(CreateView):
+class MemberCreate(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
     model = models.Member
     fields = ('last_name','first_name','id_number', 'pmpsz_number','young', 'dog', 'motor', 'active' )
 
-class MemberUpdate(UpdateView):
+class MemberUpdate(LoginRequiredMixin,UpdateView):
+    login_url = '/login/'
     fields = ('id_number', 'pmpsz_number', 'young', 'dog', 'motor', 'active')
     model = models.Member
 
-class MemberList(ListView):
+class MemberList(LoginRequiredMixin,ListView):
+    login_url = '/login/'
     model = models.Member
     ordering = ['last_name']
 
-class MemberDetail(DetailView):
+class MemberDetail(LoginRequiredMixin,DetailView):
+    login_url = '/login/'
     model = models.Member
 
-class MemberDelete(DeleteView):
+class MemberDelete(LoginRequiredMixin,DeleteView):
+    login_url = '/login/'
     model = models.Member
     success_url = reverse_lazy('time_sheet:member_list')
 
 
 
 #Duty#
-class DutyCreate(CreateView):
+class DutyCreate(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
     model = models.Duty
     form_class = forms.DutyForm
 
-class DutyUpdate(UpdateView):
+class DutyUpdate(LoginRequiredMixin,UpdateView):
+    login_url = '/login/'
     model = models.Duty
     form_class = forms.DutyForm
 
-class DutyList(ListView):
+class DutyList(LoginRequiredMixin,ListView):
+    login_url = '/login/'
     model = models.Duty
     queryset = models.Duty.objects.order_by('-date')[:10]
 
 
-class DutyFilterList(ListView):
+class DutyFilterList(LoginRequiredMixin,ListView):
+    login_url = '/login/'
     model = models.Duty
 
     ordering = ['date']
@@ -60,23 +71,28 @@ class DutyFilterList(ListView):
         return super().get_queryset().filter(date__range=[start_date, end_date])
 
 
-class DutyDetail(DetailView):
+class DutyDetail(DetailView,LoginRequiredMixin):
+    login_url = '/login/'
     model = models.Duty
 
 #Car#
-class CarCreate(CreateView):
+class CarCreate(CreateView,LoginRequiredMixin):
+    login_url = '/login/'
     model = models.Car
     fields = ('car_type', 'car_plate', 'fuel_type', 'ccm')
 
-class CarUpdate(UpdateView):
+class CarUpdate(UpdateView,LoginRequiredMixin):
+    login_url = '/login/'
     fields = ('car_type', 'fuel_type', 'ccm')
     model = models.Car
 
-class CarList(ListView):
+class CarList(ListView,LoginRequiredMixin):
+    login_url = '/login/'
     model = models.Car
 
 #####
 
+@login_required
 def duty_sum(request):
     if request.GET.get('s') != "":
         start_date = request.GET.get('s')

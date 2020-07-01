@@ -1,5 +1,8 @@
 .row {
-	border-bottom:solid 10px;
+    background: #f6f6f6;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding: 10px;
 }
 
 input, select {
@@ -22,92 +25,47 @@ input, select {
 	-o-transition: all .8s linear;
 	transition: all .8s linear;
 }
-input:focus, textarea:focus {
-	border: none 2px solid !important;
-	color: #444 !important;
-	-webkit-transition: all .8s linear;
-	-moz-transition: all .8s linear;
-	-ms-transition: all .8s linear;
-	-o-transition: all .8s linear;
-	transition: all .8s linear;
+
+.szures-btn {display: block;margin-top: 10px;}
+
+/*Buttons*/
+.btn input[type="submit"] {
+display: inline-block;
+padding: 4px 8px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 1.42857143;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+cursor: pointer;
+-webkit-user-select: none;
+   -moz-user-select: none;
+    -ms-user-select: none;
+        user-select: none;
+background-image: none;
+border: 1px solid transparent;
+border-radius: 4px;
+padding: 10px 15px !important;
+line-height: 0 !important;
 }
-textarea {
-	background: transparent !important;
-	border: none !important;
-	border: 2px solid !important;
-	border-radius: 0px !important;
-	box-shadow: none !important;
-	color: #444 !important;
-	font-size: 14px !important;
-	font-weight: 300 !important;
-	line-height: 25px !important;
-	margin-top: 0;
-	padding: 15px !important;
-	resize: none;
-	width: 100%;
-	-webkit-transition: all .8s linear;
-	-moz-transition: all .8s linear;
-	-ms-transition: all .8s linear;
-	-o-transition: all .8s linear;
-	transition: all .8s linear;
-}
-input.send_message {
-	background: none repeat scroll 0 0 #EF4A4A;
-	color: #FFFFFF;
-	cursor: pointer;
-	float: left;
+ .btn-primary, .button-warning, .d-print-none {
+  display: inline-block;
+	border-radius: 0px;
+	text-decoration: none;
+	padding: 10px 15px;
 	font-size: 12px;
-	font-weight: 400;
-	margin: 0;
-	width: 120px;
+	line-height: 19px;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
 }
-input.send_message:hover {
-	background: none repeat scroll 0 0 #262932;
-}
-fieldset {
-	border: 0 none;
-	float: left;
-	padding: 0;
-	position: relative;
-	width: 100%;
-}
-fieldset h1 {
-	color: #000000;
-	font-size: 24px;
-}
-
-.btn
-input[type="submit"] {
- border-radius: 0px;
- text-decoration: none;
- padding: 15px 20px;
- font-size: 12px;
- line-height: 19px;
- text-transform: uppercase;
- letter-spacing: 4px;
- -webkit-transition: all .4s ease-in-out;
- -moz-transition: all .4s ease-in-out;
- -ms-transition: all .4s ease-in-out;
- -o-transition: all .4s ease-in-out;
- transition: all .4s ease-in-out;
-}
-.btn-primary {
- border-radius: 0px;
- text-decoration: none;
- padding: 15px 20px;
- font-size: 18px;
- line-height: 25px;
- text-transform: uppercase;
- letter-spacing: 1px;
- -webkit-transition: all .4s ease-in-out;
- -moz-transition: all .4s ease-in-out;
- -ms-transition: all .4s ease-in-out;
- -o-transition: all .4s ease-in-out;
- transition: all .4s ease-in-out;
-}
-
-.mb-2 {width: 50%}
-
+.footer-buttons {margin-top: 10px}
 
 p {
 	color: #444;
@@ -118,7 +76,7 @@ h1, h2 {font-size: 1.4rem}
 
 
 @media only screen and (max-width: 600px) {
-.mb-2 {width: 100%}
+
 
   .car-list {
     margin-top: 20px;

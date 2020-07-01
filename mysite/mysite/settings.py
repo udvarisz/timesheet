@@ -125,8 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-LOGIN_REDIRECT_URL ='home'
-LOGOUT_REDIRECT_URL ='thanks'
+LOGIN_REDIRECT_URL ='time_sheet:duty_list'
+LOGOUT_REDIRECT_URL ='home'
 
 INTERNAL_IPS = [
     '127.0.0.1',

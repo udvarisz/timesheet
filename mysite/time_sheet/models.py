@@ -24,6 +24,7 @@ class Member(models.Model):
 
     class Meta():
         unique_together = ('first_name', 'last_name')
+        ordering = ['last_name']
 
     def __str__(self):
         return self.last_name + ' ' + self.first_name
@@ -36,7 +37,7 @@ class Member(models.Model):
 class Duty(models.Model):
     s_types = (('O', 'Önálló'),('R','Rendőrrel közös'),('Re','Rendezvénybiztosítás'),('K', 'Kutyás'),('E', 'Egyéb'))
 
-    member = models.ForeignKey('time_sheet.Member', on_delete = models.SET_DEFAULT, verbose_name= ('Szolgálatot ellátó személy'), default=1)
+    member = models.ForeignKey('time_sheet.Member', on_delete = models.SET_DEFAULT, verbose_name= ('Szolgálatot ellátó személy'), default=5)
 
     duty_type = models.CharField(max_length=2, choices = s_types, default='O',verbose_name= ('Szolgálat típusa'))
 
@@ -64,6 +65,7 @@ class Duty(models.Model):
 
     class Meta():
         unique_together = ('member', 'date', 'duty_type')
+
 
     def __str__(self):
         return str(self.date) + ' - ' + str(self.member) + ' - ' + str(self.duty_type)

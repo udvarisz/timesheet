@@ -16,9 +16,12 @@ Szolgálatok
     <p>Jelöld ki az intervallumot:</p>
     <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
       {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig">
-      <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
+      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+          <p class="szures-btn">
+            <input type="submit" value="Szűrés" class="btn btn-primary">
+          </p>
+
     </form>
   </div>
   <div class="col">
@@ -26,10 +29,11 @@ Szolgálatok
     <p>Jelöld ki az intervallumot:</p>
     <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
       {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig">
-      <div class="form-group">
-    <label for="t">Szolgálat típusa:</label>
+      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+
+   <div class="form-group col-sm-4">
+    <p>Szolgálat típusa:</p>
     <select class="form-control" name='t' id='t'>
       <option value="">Minden típus</option>
       <option value="o">Önálló</option>
@@ -38,10 +42,13 @@ Szolgálatok
       <option value="k">Kutyás</option>
       <option value="e">Egyéb</option>
     </select>
-      <input type="submit" value="Szűrés" class="btn btn-primary mb-2">
+    <p class="szures-btn">
+      <input type="submit" value="Szűrés" class="btn btn-primary">
+    </p>
     </form>
-  </div>
 
+   </div>
+</div>
 </div>
 <hr>
 <div class="container">

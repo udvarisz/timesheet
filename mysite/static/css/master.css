@@ -26,7 +26,7 @@ cursor: pointer;
 background-image: none;
 border: 1px solid transparent;
 border-radius: 4px;
-padding: 10px 15px !important;
+padding: 15px 20px !important;
 line-height: 0 !important;
 }
 .btn {
@@ -47,14 +47,14 @@ cursor: pointer;
 background-image: none;
 border: 1px solid transparent;
 border-radius: 4px;
-padding: 10px 15px !important;
+padding: 15px 20px !important;
 line-height: 0 !important;
 }
  .btn-primary, .button-warning, .d-print-none {
   display: inline-block;
 	border-radius: 0px;
 	text-decoration: none;
-	padding: 10px 15px;
+	padding: 15px 20px;
 	font-size: 12px;
 	line-height: 19px;
 	text-transform: uppercase;

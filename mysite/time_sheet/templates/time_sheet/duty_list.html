@@ -5,9 +5,10 @@ Szolgálatok
 {% block content_block %}
 <div class='jumbotron'>
   <h1>Szolgálatok listája</h1>
+  <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
 </div>
 <div class="container">
-  <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
+  
 <hr>
 <div class="row">
   <div class="col">
@@ -50,6 +51,7 @@ Szolgálatok
 </div>
 </div>
 <hr>
+<div class="container">
   <div class="row member-list">
     <p>Legutóbbi szolgálatok:</p>
     <ol>

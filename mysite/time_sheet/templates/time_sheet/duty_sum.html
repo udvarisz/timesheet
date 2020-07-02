@@ -185,18 +185,19 @@ Szolgálat
     </div></div></div>
 
 <div class="container">
-    <div id="duty_plates" class="col md-4 sm-1">
-      <div class="col md-4 sm-1">
+
+    <div id="duty_plates" class="col">
+
         <h3>Szolgálatban résztvevő gépjárművek:</h3>
         <ol>
           {% for plate in plates  %}
           <li>{{plate}}</li>
           {% endfor %}
         </ol>
-      </div>
+
     </div>
 
-    <div id="duty_dates" class="col md-4 sm-1">
+    <div id="duty_dates" class="col">
 
         <h3>Aktív napok:</h3>
         <ol>
@@ -204,9 +205,10 @@ Szolgálat
           <li>{{day}}</li>
           {% endfor %}
         </ol>
-      </div>
-    </div>
+      
+  </div>
 
+</div>
 <div class="container footer-buttons">
   <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>

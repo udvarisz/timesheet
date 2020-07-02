@@ -5,6 +5,10 @@
     padding: 10px;
 }
 
+.noborder {
+  border: 0px !important;
+}
+
 .szures-btn {display: block;margin-top: 10px;}
 
 /*Buttons*/

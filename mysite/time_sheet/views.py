@@ -61,8 +61,6 @@ class DutyFilterList(LoginRequiredMixin,ListView):
     ordering = ['date']
 
     def get_queryset(self):
-
-
         if self.request.GET.get('s') != "":
             start_date = self.request.GET.get('s')
         else:
@@ -72,11 +70,11 @@ class DutyFilterList(LoginRequiredMixin,ListView):
         else:
             end_date = datetime.date.today()
 
-        if self.request.GET.get('m') != "":
-            member = self.request.GET.get('m')
-            return super().get_queryset().filter(date__range=[start_date, end_date], member__iexact=member)
-        else:
-            return super().get_queryset().filter(date__range=[start_date, end_date])
+        # if self.request.GET.get('m') != "":
+        #     member = self.request.GET.get('m')
+        #     return super().get_queryset().filter(date__range=[start_date, end_date], member__iexact=member)
+        # else:
+        return super().get_queryset().filter(date__range=[start_date, end_date])
 
 
 class DutyDetail(DetailView,LoginRequiredMixin):

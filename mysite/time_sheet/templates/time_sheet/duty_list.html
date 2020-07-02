@@ -12,7 +12,7 @@ Szolgálatok
 
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-6">
       <div class="row justify-content-md-center noborder">
         <div class="col-md-auto">
           <h2>Szolgálatok szűrése</h2>
@@ -40,7 +40,7 @@ Szolgálatok
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col md-6">
       <div class="row justify-content-md-center noborder">
         <div class="col-md-auto">
           <h2>Szolgálati összesítő</h2>
@@ -56,22 +56,22 @@ Szolgálatok
               <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
             </div>
           </div>
+        </div>
+        <div class="row justify-content-md-center noborder">
+          <div class="col-md-auto">
+            <p align="center">Szolgálat típusa:</p>
+            <select class="form-control" name='t' id='t'>
+              <option value="">Minden típus</option>
+              <option value="o">Önálló</option>
+              <option value="r">Rendőrrel közös</option>
+              <option value="re">Rendezvénybiztosítás</option>
+              <option value="k">Kutyás</option>
+              <option value="e">Egyéb</option>
+            </select>
           </div>
-          <div class="row justify-content-md-center noborder">
-            <div class="col-md-auto">
-              <p align="center">Szolgálat típusa:</p>
-              <select class="form-control" name='t' id='t'>
-                <option value="">Minden típus</option>
-                <option value="o">Önálló</option>
-                <option value="r">Rendőrrel közös</option>
-                <option value="re">Rendezvénybiztosítás</option>
-                <option value="k">Kutyás</option>
-                <option value="e">Egyéb</option>
-              </select>
-            </div>
-          </div>
-          <div class="row justify-content-md-center noborder">
-            <div class="col-md-auto">
+        </div>
+        <div class="row justify-content-md-center noborder">
+          <div class="col-md-auto">
             <p class="szures-btn">
               <input type="submit" value="Szűrés" class="btn btn-primary">
             </p>

@@ -10,7 +10,7 @@
 /*Buttons*/
 .btn input[type="submit"] {
 display: inline-block;
-padding: 8px 12px;
+padding: 15px 20px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -31,7 +31,7 @@ line-height: 0 !important;
 }
 .btn {
 display: inline-block;
-padding: 8px 12px;
+padding: 15px 20px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -54,6 +54,7 @@ line-height: 0 !important;
   display: inline-block;
 	border-radius: 0px;
 	text-decoration: none;
+  text-align: center;
 	padding: 15px 20px !important;
 	font-size: 12px;
 	line-height: 19px;
@@ -103,10 +104,11 @@ h1, h2 {font-size: 1.4rem}
   .car-list {
     margin-top: 20px;
   }
-  li a {font-size: .85rem}
+  li a {font-size: .75rem}
 
   .footer-buttons {
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 
 h1,h2 {font-size: 1.2em}

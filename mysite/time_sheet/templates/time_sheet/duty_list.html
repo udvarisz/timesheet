@@ -19,15 +19,23 @@ Szolgálatok
           <p>Jelöld ki az intervallumot:</p>
         </div>
       </div>
-      <div class="row noborder">
+      <div class="row justify-content-md-center noborder">
         <div class="col-md-auto">
           <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
             {% csrf_token %}
-            <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-            <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
-            <p class="szures-btn">
-              <input type="submit" value="Szűrés" class="btn btn-primary">
-            </p>
+            <div class="row justify-content-md-center noborder">
+              <div class="col-md-auto">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+              </div>
+            </div>
+            <div class="row justify-content-md-center noborder">
+              <div class="col-md-auto">
+                <p class="szures-btn">
+                  <input type="submit" value="Szűrés" class="btn btn-primary">
+                </p>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -39,23 +47,31 @@ Szolgálatok
           <p>Jelöld ki az intervallumot:</p>
         </div>
       </div>
-      <div class="row noborder">
-        <div class="col">
+      <div class="row justify-content-md-center noborder">
+        <div class="col-md-auto">
           <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
             {% csrf_token %}
-            <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-            <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+            <div class="row justify-content-md-center noborder">
+              <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+              <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+            </div>
           </div>
-          <div class="col">
-            <p>Szolgálat típusa:</p>
-            <select class="form-control" name='t' id='t'>
-              <option value="">Minden típus</option>
-              <option value="o">Önálló</option>
-              <option value="r">Rendőrrel közös</option>
-              <option value="re">Rendezvénybiztosítás</option>
-              <option value="k">Kutyás</option>
-              <option value="e">Egyéb</option>
-            </select>
+          </div>
+          <div class="row justify-content-md-center noborder">
+            <div class="col-md-auto">
+              <p align="center">Szolgálat típusa:</p>
+              <select class="form-control" name='t' id='t'>
+                <option value="">Minden típus</option>
+                <option value="o">Önálló</option>
+                <option value="r">Rendőrrel közös</option>
+                <option value="re">Rendezvénybiztosítás</option>
+                <option value="k">Kutyás</option>
+                <option value="e">Egyéb</option>
+              </select>
+            </div>
+          </div>
+          <div class="row justify-content-md-center noborder">
+            <div class="col-md-auto">
             <p class="szures-btn">
               <input type="submit" value="Szűrés" class="btn btn-primary">
             </p>

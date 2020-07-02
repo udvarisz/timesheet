@@ -11,53 +11,55 @@ Szolgálatok
 </span>
 
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center noborder">
     <div class="col-md-6">
-      <div class="row justify-content-md-center noborder">
+      <div class="row justify-content-center noborder">
         <div class="col-md-auto">
           <h2>Szolgálatok szűrése</h2>
           <p>Jelöld ki az intervallumot:</p>
         </div>
       </div>
-      <div class="row justify-content-md-center noborder">
+      <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
             {% csrf_token %}
-            <div class="row justify-content-md-center noborder">
-              <div class="col-md-auto">
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto text-center">
                 <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
                 <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
               </div>
             </div>
-            <div class="row justify-content-md-center noborder">
-              <div class="col-md-auto">
-                <p class="szures-btn">
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto">
+                <p class="szures-btn" align="center">
                   <input type="submit" value="Szűrés" class="btn btn-primary">
                 </p>
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
     <div class="col md-6">
-      <div class="row justify-content-md-center noborder">
+      <div class="row justify-content-center noborder">
         <div class="col-md-auto">
           <h2>Szolgálati összesítő</h2>
           <p>Jelöld ki az intervallumot:</p>
         </div>
       </div>
-      <div class="row justify-content-md-center noborder">
+      <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
             {% csrf_token %}
-            <div class="row justify-content-md-center noborder">
-              <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-              <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto text-center">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+              </div>
             </div>
           </div>
         </div>
-        <div class="row justify-content-md-center noborder">
+        <div class="row justify-content-center noborder">
           <div class="col-md-auto">
             <p align="center">Szolgálat típusa:</p>
             <select class="form-control" name='t' id='t'>
@@ -70,7 +72,7 @@ Szolgálatok
             </select>
           </div>
         </div>
-        <div class="row justify-content-md-center noborder">
+        <div class="row justify-content-center noborder">
           <div class="col-md-auto">
             <p class="szures-btn">
               <input type="submit" value="Szűrés" class="btn btn-primary">
@@ -82,14 +84,14 @@ Szolgálatok
   </div>
 </div>
 
-  <div class="container">
-    <div class="row member-list">
-      <p>Legutóbbi szolgálatok:</p>
-      <ol>
-        {% for duty in duty_list %}
-        <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
-        {% endfor %}
-      </ol>
-    </div>
-    {% endblock %}
+<div class="container">
+  <div class="row member-list">
+    <p>Legutóbbi szolgálatok:</p>
+    <ol>
+      {% for duty in duty_list %}
+      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
+      {% endfor %}
+    </ol>
   </div>
+  {% endblock %}
+</div>

@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from braces.views import SelectRelatedMixin
 from django.urls import reverse_lazy
 import datetime
 from django.db.models import Avg, Sum, Count
@@ -70,10 +69,6 @@ class DutyFilterList(LoginRequiredMixin,ListView):
         else:
             end_date = datetime.date.today()
 
-        # if self.request.GET.get('m') != "":
-        #     member = self.request.GET.get('m')
-        #     return super().get_queryset().filter(date__range=[start_date, end_date], member__iexact=member)
-        # else:
         return super().get_queryset().filter(date__range=[start_date, end_date])
 
 

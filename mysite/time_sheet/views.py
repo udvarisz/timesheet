@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from braces.views import SelectRelatedMixin
 from django.urls import reverse_lazy
 import datetime
 from django.db.models import Avg, Sum, Count
@@ -60,6 +61,8 @@ class DutyFilterList(LoginRequiredMixin,ListView):
     ordering = ['date']
 
     def get_queryset(self):
+
+
         if self.request.GET.get('s') != "":
             start_date = self.request.GET.get('s')
         else:
@@ -68,12 +71,20 @@ class DutyFilterList(LoginRequiredMixin,ListView):
             end_date = self.request.GET.get('e')
         else:
             end_date = datetime.date.today()
-        return super().get_queryset().filter(date__range=[start_date, end_date])
+
+        if self.request.GET.get('m') != "":
+            member = self.request.GET.get('m')
+            return super().get_queryset().filter(date__range=[start_date, end_date], member__iexact=member)
+        else:
+            return super().get_queryset().filter(date__range=[start_date, end_date])
 
 
 class DutyDetail(DetailView,LoginRequiredMixin):
     login_url = '/login/'
     model = models.Duty
+
+
+
 
 #Car#
 class CarCreate(CreateView,LoginRequiredMixin):
@@ -90,6 +101,8 @@ class CarList(ListView,LoginRequiredMixin):
     login_url = '/login/'
     model = models.Car
 
+#####
+#querys
 #####
 
 @login_required
@@ -165,3 +178,7 @@ def duty_sum(request):
     data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates}
 
     return render(request,'time_sheet/duty_sum.html',context=data)
+
+@login_required
+def member_sum(request):
+    pass

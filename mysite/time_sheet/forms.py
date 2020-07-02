@@ -23,3 +23,8 @@ class DutyUpdateForm(forms.ModelForm):
         'plate':forms.RadioSelect(),
         'commander':forms.CheckboxInput(attrs={'class':'duty commander'}),
         }
+
+class DutyMemberForm(forms.ModelForm):
+    class Meta():
+        model = Duty
+        fields =('member',) 

@@ -10,7 +10,7 @@
 /*Buttons*/
 .btn input[type="submit"] {
 display: inline-block;
-padding: 4px 8px;
+padding: 8px 12px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -31,7 +31,7 @@ line-height: 0 !important;
 }
 .btn {
 display: inline-block;
-padding: 4px 8px;
+padding: 8px 12px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -50,11 +50,11 @@ border-radius: 4px;
 padding: 15px 20px !important;
 line-height: 0 !important;
 }
- .btn-primary, .button-warning, .d-print-none {
+ .btn-primary, .btn-warning, .btn-danger, .d-print-none {
   display: inline-block;
 	border-radius: 0px;
 	text-decoration: none;
-	padding: 15px 20px;
+	padding: 15px 20px !important;
 	font-size: 12px;
 	line-height: 19px;
 	text-transform: uppercase;

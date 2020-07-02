@@ -48,6 +48,30 @@ line-height: 0 !important;
 .btn-primary {background-color: #5d91cd;border-color: #5d91cd}
 .footer-buttons {margin-top: 10px}
 
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f6f6f6;
+
+}
+
+.wrap-login100 {
+  width: 560px;
+}
+/*========================*/
+
 p {
 	color: #444;
 	//font-size: 12px;

@@ -7,59 +7,72 @@ Szolgálatok
   <h1>Szolgálatok listája</h1>
 </div>
 <span class="col btn-primary"
-  <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
+<a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
 </span>
 
 <div class="container">
-<div class="row">
-  <div class="col">
-    <h2>Szolgálatok szűrése</h2>
-    <p>Jelöld ki az intervallumot:</p>
-    <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
-      {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
-          <p class="szures-btn">
-            <input type="submit" value="Szűrés" class="btn btn-primary">
-          </p>
-
-    </form>
+  <div class="row">
+    <div class="col">
+      <div class="row justify-content-md-center noborder">
+        <div class="col-md-auto">
+          <h2>Szolgálatok szűrése</h2>
+          <p>Jelöld ki az intervallumot:</p>
+        </div>
+      </div>
+      <div class="row noborder">
+        <div class="col-md-auto">
+          <form class="form-inline" action="{% url 'time_sheet:duty_filter_list' %}" method="get" autocomplete="off">
+            {% csrf_token %}
+            <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+            <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+            <p class="szures-btn">
+              <input type="submit" value="Szűrés" class="btn btn-primary">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row justify-content-md-center noborder">
+        <div class="col-md-auto">
+          <h2>Szolgálati összesítő</h2>
+          <p>Jelöld ki az intervallumot:</p>
+        </div>
+      </div>
+      <div class="row noborder">
+        <div class="col">
+          <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
+            {% csrf_token %}
+            <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+            <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+          </div>
+          <div class="col">
+            <p>Szolgálat típusa:</p>
+            <select class="form-control" name='t' id='t'>
+              <option value="">Minden típus</option>
+              <option value="o">Önálló</option>
+              <option value="r">Rendőrrel közös</option>
+              <option value="re">Rendezvénybiztosítás</option>
+              <option value="k">Kutyás</option>
+              <option value="e">Egyéb</option>
+            </select>
+            <p class="szures-btn">
+              <input type="submit" value="Szűrés" class="btn btn-primary">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <h2>Szolgálati összesítő</h2>
-    <p>Jelöld ki az intervallumot:</p>
-    <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
-      {% csrf_token %}
-      <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-      <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
-</div>
-   <div class="col">
-    <p>Szolgálat típusa:</p>
-    <select class="form-control" name='t' id='t'>
-      <option value="">Minden típus</option>
-      <option value="o">Önálló</option>
-      <option value="r">Rendőrrel közös</option>
-      <option value="re">Rendezvénybiztosítás</option>
-      <option value="k">Kutyás</option>
-      <option value="e">Egyéb</option>
-    </select>
-    <p class="szures-btn">
-      <input type="submit" value="Szűrés" class="btn btn-primary">
-    </p>
-    </form>
 
-   </div>
-</div>
-</div>
-
-<div class="container">
-  <div class="row member-list">
-    <p>Legutóbbi szolgálatok:</p>
-    <ol>
-      {% for duty in duty_list %}
-      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
+  <div class="container">
+    <div class="row member-list">
+      <p>Legutóbbi szolgálatok:</p>
+      <ol>
+        {% for duty in duty_list %}
+        <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
         {% endfor %}
       </ol>
     </div>
-  {% endblock %}
+    {% endblock %}
   </div>

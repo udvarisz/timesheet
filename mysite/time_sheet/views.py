@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 import datetime
 from django.db.models import Avg, Sum, Count
@@ -174,4 +175,14 @@ def duty_sum(request):
 
 @login_required
 def member_sum(request):
-    pass
+    if request.GET.get('s') != "":
+        start_date = request.GET.get('s')
+    else:
+        start_date = datetime.date.today().replace(day=1)
+
+    if request.GET.get('e') != "":
+        end_date = request.GET.get('e')
+    else:
+        end_date = datetime.date.today()
+    member = get_object_or_404(Member,pk=pk)
+    duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()

@@ -53,7 +53,7 @@ line-height: 0 !important;
 
 .container-login100 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -65,10 +65,6 @@ line-height: 0 !important;
   padding: 15px;
   background: #f6f6f6;
 
-}
-
-.wrap-login100 {
-  width: 560px;
 }
 /*========================*/
 

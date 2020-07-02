@@ -184,5 +184,49 @@ def member_sum(request):
         end_date = request.GET.get('e')
     else:
         end_date = datetime.date.today()
-    member = get_object_or_404(Member,pk=pk)
-    duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
+    member = request.GET.get('m')
+    duties = models.Duty.objects.filter(date__range=[start_date, end_date ], member__exact=member).all()
+
+    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    plates = []
+    dates =[]
+
+    for duty in duties:
+        member = str(duty.member)
+        pk=duty.member.pk
+        if str(duty.plate) not in plates and duty.plate != None:
+            plates.append(str(duty.plate))
+        if str(duty.date) not in dates:
+            dates.append(str(duty.date))
+        kms += duty.kms
+        help += duty.help
+        if duty.duty_type == 'O':
+            o += duty.hours
+        elif duty.duty_type == 'R':
+            r += duty.hours
+        elif duty.duty_type == 'Re':
+            re += duty.hours
+        elif duty.duty_type == 'K':
+            k += duty.hours
+        elif duty.duty_type == 'E':
+            e += duty.hours
+        if duty.retention:
+            retention +=1
+        if duty.caught:
+            caught +=1
+        if duty.missing:
+            missing +=1
+        if duty.signal:
+            signal +=1
+        if duty.other:
+            other +=1
+
+    tot = o+r+re+k+e
+    plates.sort()
+    tot_o = o+e
+
+
+
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk, 'member':member}
+
+    return render(request,'time_sheet/member_sum.html',context=data)

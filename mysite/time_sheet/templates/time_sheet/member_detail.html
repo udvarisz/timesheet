@@ -8,9 +8,23 @@ Tagok
 </div>
 
 <div class="container">
+  <div class="container">
 
+
+  <h2>{{member.first_name}} szolgálatainak összesítése</h2>
+  <form class="form-inline" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
+    {% csrf_token %}
+    <input type="hidden" name="m" value="{{member.pk}}">
+    <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+    <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+        <p class="szures-btn">
+          <input type="submit" value="Összesítés" class="btn btn-primary">
+        </p>
+
+  </form>
+  </div>
   <div class="container member-list">
-
+<h2>{{member.first_name}} adatai </h2>
   <ul>
 <li><strong>Igazovány szám: </strong>{{member.id_number}}</li>
 <li><strong>PMPSZ azonosító: </strong>{{member.pmpsz_number}}</li>
@@ -20,6 +34,10 @@ Tagok
 <li><strong>Motoros polgárőr: </strong>{% if member.motor %}Igen {% else %}Nem{% endif %}</li>
 <li><strong>Aktív: </strong>{% if member.active %}Igen {% else %}Nem{% endif %}</li>
   </ul>
+  <h2>Szolgálatok szűrése</h2>
+  <p>Jelöld ki az intervallumot:</p>
+
+
   <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
   {% if user.is_superuser %}
   <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>

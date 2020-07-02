@@ -6,9 +6,11 @@ Login
 {% endblock %}
 
 {% block content_block %}
-<div class="container">
-  <h1 class="inverse">Login</h1>
-  <form method="post">
+
+<div class="container-login100">
+  <div class="wrap-login100 p-b-160 p-t-50">
+  <h1 class="">Bejelentkezés</h1>
+  <form method="post" class="login-group">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
@@ -17,4 +19,6 @@ Login
   </form>
 
 </div>
+</div>
+
 {% endblock %}

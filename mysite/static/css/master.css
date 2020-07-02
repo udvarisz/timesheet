@@ -10,7 +10,7 @@
 /*Buttons*/
 .btn input[type="submit"] {
 display: inline-block;
-padding: 4px 8px;
+padding: 15px 20px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -26,12 +26,12 @@ cursor: pointer;
 background-image: none;
 border: 1px solid transparent;
 border-radius: 4px;
-padding: 10px 15px !important;
+padding: 15px 20px !important;
 line-height: 0 !important;
 }
 .btn {
 display: inline-block;
-padding: 4px 8px;
+padding: 15px 20px;
 margin-bottom: 0;
 font-size: 14px;
 font-weight: normal;
@@ -47,14 +47,15 @@ cursor: pointer;
 background-image: none;
 border: 1px solid transparent;
 border-radius: 4px;
-padding: 10px 15px !important;
+padding: 15px 20px !important;
 line-height: 0 !important;
 }
- .btn-primary, .button-warning, .d-print-none {
+ .btn-primary, .btn-warning, .btn-danger, .d-print-none {
   display: inline-block;
 	border-radius: 0px;
 	text-decoration: none;
-	padding: 10px 15px;
+  text-align: center;
+	padding: 15px 20px !important;
 	font-size: 12px;
 	line-height: 19px;
 	text-transform: uppercase;
@@ -103,10 +104,11 @@ h1, h2 {font-size: 1.4rem}
   .car-list {
     margin-top: 20px;
   }
-  li a {font-size: .85rem}
+  li a {font-size: .75rem}
 
   .footer-buttons {
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 
 h1,h2 {font-size: 1.2em}

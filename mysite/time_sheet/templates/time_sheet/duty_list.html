@@ -6,9 +6,11 @@ Szolgálatok
 <div class='jumbotron'>
   <h1>Szolgálatok listája</h1>
 </div>
-<div class="container">
+<span class="col btn-primary"
   <a href="{% url 'time_sheet:duty_create' %}" class="btn btn-primary">Új Szolgálat rögzítése</a>
-<hr>
+</span>
+
+<div class="container">
 <div class="row">
   <div class="col">
     <h2>Szolgálatok szűrése</h2>
@@ -49,7 +51,8 @@ Szolgálatok
    </div>
 </div>
 </div>
-<hr>
+
+<div class="container">
   <div class="row member-list">
     <p>Legutóbbi szolgálatok:</p>
     <ol>

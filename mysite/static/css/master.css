@@ -8,7 +8,7 @@
 .noborder {
   border: 0px !important;
 }
-
+.jumbotron {padding: 1rem 2rem}
 .szures-btn {display: block;margin-top: 10px;}
 
 /*Buttons*/

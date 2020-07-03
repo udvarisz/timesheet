@@ -61,23 +61,29 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Bejelentkezés <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
         </ul>
         {% endif %}
-
-      </nav>
-      {# end navbar #}
-      <div class="content container mycontainer">
-
-        {% block content_block %}
-        {# site content #}
-        {% endblock %}
-
-
       </div>
+    </nav>
+  </div>
+  {# end navbar #}
+  <div class="content container mycontainer">
 
-      <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
-      <script src="{% static 'js/jquery.ui.datepicker-hu.js' %}"></script>
+    {% block content_block %}
+    {# site content #}
+    {% endblock %}
+  </div>
 
-    </script>
-    <script src="{% static 'js/master.js'%}" type="text/javascript" ></script>
+  <div class="container d-print-none">
+    <footer class="footer">
+      <div class="container text-center ">
+        <span class="text-muted align-top">&copy 2020 - Hegyőrség Törökbálint Polgárőr Egyesület ° Powered by <a href="http://webariel.hu" target="blank">Webariel</a></span>
+      </div>
+    </footer>
+  </div>
+  <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
+  <script src="{% static 'js/jquery.ui.datepicker-hu.js' %}"></script>
 
-  </body>
-  </html>
+
+  <script src="{% static 'js/master.js'%}" type="text/javascript" ></script>
+
+</body>
+</html>

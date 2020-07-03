@@ -289,6 +289,6 @@ def plate_sum(request):
 
 
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'members':len(memebers), 'start':start_date, 'end':end_date,'days':len(dates),'dates':dates,'tot_o':tot_o,'pk':pk, 'car':car}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'members':len(members), 'start':start_date, 'end':end_date,'days':len(dates),'dates':dates,'tot_o':tot_o,'pk':pk, 'car':car, 'users':members}
 
     return render(request,'time_sheet/car_sum.html',context=data)

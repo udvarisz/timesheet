@@ -89,7 +89,7 @@ Szolgálatok
     <p>Legutóbbi szolgálatok:</p>
     <ol>
       {% for duty in duty_list %}
-      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {{duty.duty_type}}</a></li>
+      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% else %}Egyéb{% endif %}</a></li>
       {% endfor %}
     </ol>
   </div>

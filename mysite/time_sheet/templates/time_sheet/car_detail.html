@@ -29,10 +29,10 @@ Tagok
 <li><strong>Tulajdonos: </strong>{{car.owner}}</li>
 <li><strong>Rendszám: </strong>{{car.car_plate}}</li>
 <li><strong>Típus: </strong>{{car.car_type}}</li>
-<li><strong>Üzemanyag: </strong>{{car.fuel_type}}</li>
+<li><strong>Üzemanyag: </strong> {% if car.fuel_type == 'B' %} Benzin {% elif car.fuel_type == 'D' %} Gázolaj {% else %} Gáz {% endif %} </li>
 <li><strong>Hengerűrtartalom: </strong>{{car.ccm}} ccm</li>
 <li><strong>Szín: </strong>{{car.color}}</li>
-<li><strong>Felszerelt járőrautó: </strong>{% if member.stripped %}Igen {% else %}Nem{% endif %}</li>
+<li><strong>Felszerelt járőrautó: </strong>{% if car.stripped %}Igen {% else %}Nem{% endif %}</li>
   </ul>
 
 

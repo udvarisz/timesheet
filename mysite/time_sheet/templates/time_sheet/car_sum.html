@@ -102,7 +102,7 @@ Szolgálat
 
 
     <div class="col duty_cars">
-      Használt autók:
+      Használók száma:
     </div>
     <div class="col">
       Megtett kilométerek:
@@ -113,7 +113,7 @@ Szolgálat
   </div>
   <div class="row">
     <div class="col duty_cars">
-      {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+      {{members}} fő <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
         <i class="fa fa-arrow-down d-print-none" aria-hidden="true"></i>
       </a>
     </div>
@@ -132,10 +132,10 @@ Szolgálat
 <div class="container">
   <div class="row collapse" id='duty-collapse'>
     <div id="duty_plates" class="col-sm">
-      <h3>Szolgálatokban használt gépjárművek:</h3>
+      <h3>Gépjárművet használól:</h3>
       <ol>
-        {% for plate in plates  %}
-        <li>{{plate}}</li>
+        {% for user in users  %}
+        <li>{{user}}</li>
         {% endfor %}
       </ol>
     </div>
@@ -151,7 +151,7 @@ Szolgálat
 </div>
 
 <div class="container footer-buttons">
-  <a href="{% url 'time_sheet:member_detail' pk=pk %}" class="btn btn-primary d-print-none">Vissza</a>
+  <a href="{% url 'time_sheet:car_detail' pk=pk %}" class="btn btn-primary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
 
 </div>

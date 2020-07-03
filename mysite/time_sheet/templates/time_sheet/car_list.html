@@ -14,7 +14,7 @@ Gépjárművek
 
     <ol>
       {% for car in car_list %}
-      <li><a href="{% url 'time_sheet:car_detail' pk=car.pk %}"><strong>Frsz:</strong> {{car.car_plate}}</a></li>
+      <li><a href="{% url 'time_sheet:car_detail' pk=car.pk %}"><strong>{{car.car_plate}}</strong> - {{car.car_type}} </a></li>
       {% endfor %}
     </ol>
   </div>

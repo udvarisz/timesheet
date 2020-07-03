@@ -127,33 +127,24 @@ Szolgálat
       </div>
     </div>
   </div>
-
 </div>
 <div class="container">
-
-
   <div class="row collapse" id='duty-collapse'>
-
-    <div id="duty_plates" class="col md-4 sm-1">
-      <div class="col md-4 sm-1">
+    <div id="duty_plates" class="col-sm">
         <h3>Szolgálatban résztvevő gépjárművek:</h3>
         <ol>
           {% for plate in plates  %}
           <li>{{plate}}</li>
           {% endfor %}
         </ol>
-      </div>
     </div>
-
-    <div id="duty_dates" class="col md-4 sm-1">
-      <div class="container">
+    <div id="duty_dates" class="col-sm">
         <h3>Aktív napok:</h3>
         <ol>
           {% for day in dates %}
           <li>{{day}}</li>
           {% endfor %}
         </ol>
-      </div>
     </div>
   </div>
 </div>

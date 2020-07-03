@@ -182,33 +182,30 @@ Szolgálat
           {% endfor %}
         </ol>
       </div>
-    </div></div></div>
-
-<div class="container">
-
-    <div id="duty_plates" class="col">
-
-        <h3>Szolgálatban résztvevő gépjárművek:</h3>
-        <ol>
-          {% for plate in plates  %}
-          <li>{{plate}}</li>
-          {% endfor %}
-        </ol>
-
     </div>
-
-    <div id="duty_dates" class="col">
-
-        <h3>Aktív napok:</h3>
-        <ol>
-          {% for day in dates %}
-          <li>{{day}}</li>
-          {% endfor %}
-        </ol>
-      
   </div>
-
 </div>
+
+    <div class="container">
+      <div class="row">
+        <div  id="duty_plates" class="col-sm">
+          <h3>Szolgálatban résztvevő gépjárművek:</h3>
+          <ol>
+            {% for plate in plates  %}
+            <li>{{plate}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div id="duty_dates" class="col-sm">
+          <h3>Aktív napok:</h3>
+          <ol>
+            {% for day in dates %}
+            <li>{{day}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
 <div class="container footer-buttons">
   <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>

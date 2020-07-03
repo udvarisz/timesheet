@@ -6,7 +6,9 @@ from . import models
 class DutyAdmin(admin.ModelAdmin):
     list_display=['date', 'member', 'duty_type', 'plate']
 
+class CarAdmin(admin.ModelAdmin):
+    list_display=['car_plate', 'car_type', 'owner']
 
 admin.site.register(models.Member)
 admin.site.register(models.Duty,DutyAdmin)
-admin.site.register(models.Car)
+admin.site.register(models.Car,CarAdmin)

@@ -87,6 +87,12 @@ class Car(models.Model):
 
     ccm = models.PositiveSmallIntegerField(verbose_name= ('Lökettérfogat'))
 
+    owner = models.CharField(max_length=150, verbose_name= ('Tulajdonos'), blank=True, null=True)
+
+    color = models.CharField(max_length=150, verbose_name= ('Szín'), blank=True, null=True)
+
+    stripped = models.BooleanField(default=False, verbose_name= ('Felszerelt járőrautó'))
+
     def __str__(self):
         return self.car_plate
 

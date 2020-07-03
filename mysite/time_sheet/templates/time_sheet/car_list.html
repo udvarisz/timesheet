@@ -8,20 +8,15 @@ Gépjárművek
 </div>
 
 <div class="container">
-<a href="{% url 'time_sheet:car_create' %}" class="btn btn-primary">Új Gépjármű hozzáadása</a>
+  <a href="{% url 'time_sheet:car_create' %}" class="btn btn-primary">Új Gépjármű hozzáadása</a>
 
   <div class="container car-list">
 
-
-  {% for car in car_list %}
-
-    <h2>{{car.pk}} : {{car.car_plate}}</a></h2>
-    <ul>
-      <li><strong>Típus:</strong> {{car.car_type}}</li>
-      <li><strong>Üzemanyag:</strong> {{car.get_fuel_type_display}}</li>
-      <li><strong>Lökettérfogat:</strong> {{car.ccm}}ccm</li>
-    </ul>
-  {% endfor %}
-</div>
+    <ol>
+      {% for car in car_list %}
+      <li><a href="{% url 'time_sheet:car_detail' pk=car.pk %}"><strong>Frsz:</strong> {{car.car_plate}}</a></li>
+      {% endfor %}
+    </ol>
+  </div>
 </div>
 {% endblock %}

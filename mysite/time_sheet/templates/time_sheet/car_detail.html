@@ -8,38 +8,63 @@ Tagok
 </div>
 
 <div class="container">
-  <div class="container">
-
-
-  <h2>{{car.car_plate}} szolgálatainak összesítése</h2>
-  <form class="form-inline" action="{% url 'time_sheet:car_sum' %}" method="get" autocomplete="off">
-    {% csrf_token %}
-    <input type="hidden" name="p" value="{{car.pk}}">
-    <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-    <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
-        <p class="szures-btn">
-          <input type="submit" value="Összesítés" class="btn btn-primary">
-        </p>
-
-  </form>
+  <div class="row">
+    <div class="col">
+      <div class="row justify-content-center noborder">
+        <div class="col-12">
+          <h2>{{car.car_plate}} szolgálatainak összesítése</h2>
+        </div>
+      </div>
+      <div class="row noborder">
+        <div class="col-md-auto">
+          <form class="form-inline" action="{% url 'time_sheet:car_sum' %}" method="get" autocomplete="off">
+            {% csrf_token %}
+            <input type="hidden" name="p" value="{{car.pk}}">
+            <div class="row noborder">
+              <div class="col-md-auto">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row noborder">
+          <div class="col-12">
+            <p class="szures-btn">
+              <input type="submit" value="Összesítés" class="btn btn-primary">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container member-list">
-<h2>{{car.car_plate}} adatai </h2>
-  <ul>
-<li><strong>Tulajdonos: </strong>{{car.owner}}</li>
-<li><strong>Rendszám: </strong>{{car.car_plate}}</li>
-<li><strong>Típus: </strong>{{car.car_type}}</li>
-<li><strong>Üzemanyag: </strong> {% if car.fuel_type == 'B' %} Benzin {% elif car.fuel_type == 'D' %} Gázolaj {% else %} Gáz {% endif %} </li>
-<li><strong>Hengerűrtartalom: </strong>{{car.ccm}} ccm</li>
-<li><strong>Szín: </strong>{{car.color}}</li>
-<li><strong>Felszerelt járőrautó: </strong>{% if car.stripped %}Igen {% else %}Nem{% endif %}</li>
-  </ul>
-
-
-  <a href="{% url 'time_sheet:car_list' %}" class="btn btn-warning">Vissza</a>
-  {% if user.is_superuser %}
-  <a href="{% url 'time_sheet:car_update' pk=car.pk %}" class="btn btn-primary ">Módosítás</a>
-  {% endif %}
 </div>
+<div class="container">
+  <div class="row member-list">
+    <div class="row noborder">
+      <div class="col-12">
+        <h2>{{car.car_plate}} adatai </h2>
+      </div>
+    </div>
+    <div class="row noborder">
+      <div class="col-12">
+        <ul>
+          <li><strong>Tulajdonos: </strong>{{car.owner}}</li>
+          <li><strong>Rendszám: </strong>{{car.car_plate}}</li>
+          <li><strong>Típus: </strong>{{car.car_type}}</li>
+          <li><strong>Üzemanyag: </strong> {% if car.fuel_type == 'B' %} Benzin {% elif car.fuel_type == 'D' %} Gázolaj {% else %} Gáz {% endif %} </li>
+          <li><strong>Hengerűrtartalom: </strong>{{car.ccm}} ccm</li>
+          <li><strong>Szín: </strong>{{car.color}}</li>
+          <li><strong>Felszerelt járőrautó: </strong>{% if car.stripped %}Igen {% else %}Nem{% endif %}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <a href="{% url 'time_sheet:car_list' %}" class="btn btn-warning">Vissza</a>
+      {% if user.is_superuser %}
+      <a href="{% url 'time_sheet:car_update' pk=car.pk %}" class="btn btn-primary ">Módosítás</a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

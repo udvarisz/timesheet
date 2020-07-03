@@ -8,15 +8,18 @@ Gépjárművek
 </div>
 
 <div class="container">
-  <a href="{% url 'time_sheet:car_create' %}" class="btn btn-primary">Új Gépjármű hozzáadása</a>
+  <span class="col btn-primary">
+    <a href="{% url 'time_sheet:car_create' %}" class="btn btn-primary">Új Gépjármű hozzáadása</a>
+  </span>
 
-  <div class="container car-list">
-
-    <ol>
-      {% for car in car_list %}
-      <li><a href="{% url 'time_sheet:car_detail' pk=car.pk %}"><strong>{{car.car_plate}}</strong> - {{car.car_type}} </a></li>
-      {% endfor %}
-    </ol>
+  <div class="container">
+    <div class="row member-list">
+      <ol>
+        {% for car in car_list %}
+        <li><a href="{% url 'time_sheet:car_detail' pk=car.pk %}"><strong>{{car.car_plate}}</strong> - {{car.car_type}} </a></li>
+        {% endfor %}
+      </ol>
+    </div>
   </div>
 </div>
 {% endblock %}

@@ -8,39 +8,67 @@ Tagok
 </div>
 
 <div class="container">
-  <div class="container">
-
-
-  <h2>{{member.first_name}} szolgálatainak összesítése</h2>
-  <form class="form-inline" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
-    {% csrf_token %}
-    <input type="hidden" name="m" value="{{member.pk}}">
-    <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-    <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
-        <p class="szures-btn">
-          <input type="submit" value="Összesítés" class="btn btn-primary">
-        </p>
-
-  </form>
+  <div class="row">
+    <div class="col">
+      <div class="row justify-content-center noborder">
+        <div class="col-12">
+          <h2>{{member.first_name}} szolgálatainak összesítése</h2>
+        </div>
+      </div>
+      <div class="row noborder">
+        <div class="col-md-auto">
+          <form class="form-inline" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
+            {% csrf_token %}
+            <input type="hidden" name="m" value="{{member.pk}}">
+            <div class="row noborder">
+              <div class="col-md-auto">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row noborder">
+          <div class="col-12">
+            <p class="szures-btn">
+              <input type="submit" value="Összesítés" class="btn btn-primary">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container member-list">
-<h2>{{member.first_name}} adatai </h2>
-  <ul>
-<li><strong>Igazovány szám: </strong>{{member.id_number}}</li>
-<li><strong>PMPSZ azonosító: </strong>{{member.pmpsz_number}}</li>
-<li><strong>Csatlakozás dátuma: </strong>{{member.reg_date}}</li>
-<li><strong>Ifjú polgárőr: </strong>{% if member.young %}Igen {% else %}Nem{% endif %}</li>
-<li><strong>Kutyás polgárőr: </strong>{% if member.dog %}Igen {% else %}Nem{% endif %}</li>
-<li><strong>Motoros polgárőr: </strong>{% if member.motor %}Igen {% else %}Nem{% endif %}</li>
-<li><strong>Aktív: </strong>{% if member.active %}Igen {% else %}Nem{% endif %}</li>
-  </ul>
-
-
-  <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
-  {% if user.is_superuser %}
-  <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>
-  <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Törlés</a>
-  {% endif %}
 </div>
+<div class="container">
+
+
+  <div class="row member-list">
+    <div class="row noborder">
+      <div class="col-12">
+        <h2>{{member.first_name}} adatai </h2>
+      </div>
+    </div>
+    <div class="row noborder">
+      <div class="col-12">
+        <ul>
+          <li><strong>Igazovány szám: </strong>{{member.id_number}}</li>
+          <li><strong>PMPSZ azonosító: </strong>{{member.pmpsz_number}}</li>
+          <li><strong>Csatlakozás dátuma: </strong>{{member.reg_date}}</li>
+          <li><strong>Ifjú polgárőr: </strong>{% if member.young %}Igen {% else %}Nem{% endif %}</li>
+          <li><strong>Kutyás polgárőr: </strong>{% if member.dog %}Igen {% else %}Nem{% endif %}</li>
+          <li><strong>Motoros polgárőr: </strong>{% if member.motor %}Igen {% else %}Nem{% endif %}</li>
+          <li><strong>Aktív: </strong>{% if member.active %}Igen {% else %}Nem{% endif %}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza</a>
+      {% if user.is_superuser %}
+      <a href="{% url 'time_sheet:member_update' pk=member.pk %}" class="btn btn-primary ">Módosítás</a>
+      <a href="{% url 'time_sheet:member_delete' pk=member.pk %}" class="btn btn-danger">Törlés</a>
+      {% endif %}
+
+    </div>
+  </div>
 </div>
 {% endblock %}

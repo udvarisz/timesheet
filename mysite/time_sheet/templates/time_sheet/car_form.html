@@ -13,12 +13,13 @@ Member
     Gépjármű módosítása: {{car.car_type}} {{car.car_plate}}
     {% endif %}
   </h1>
-<form method="POST">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-  <button type="submit" class="btn btn-primary">Kész</button>
-  <a href="{% url 'time_sheet:car_list' %}" class="btn btn-warning">Mégsem</a>
-  {% endbuttons %}
-</form>
+  <form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Kész</button>
+    <a href="{% url 'time_sheet:car_list' %}" class="btn btn-warning">Mégsem</a>
+    {% endbuttons %}
+  </form>
+</div>
 {% endblock %}

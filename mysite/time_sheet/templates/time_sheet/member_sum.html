@@ -12,144 +12,147 @@ Szolgálat
 </div>
 
 <hr>
-<div id="orak">
-  <h2>Szolgálati órák</h2>
-  <div class="row">
-    <div class="col">
-      Rendőrrel közös
-    </div>
-    <div class="col">
-      Rendezvénybiztosítás
-    </div>
-    <div class="col">
-      Önálló (ebből Egyéb)
-    </div>
-    <div class="col">
-      Kutyás
-    </div>
-    <div class="col">
-      Összes
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{r}} óra
-    </div>
-    <div class="col">
-      {{re}} óra
-    </div>
-    <div class="col">
-      {{tot_o}} óra ({{e}} óra)
-    </div>
-    <div class="col">
-      {{k}} óra
-    </div>
-    <div class="col">
-      {{tot}} óra
-    </div>
-  </div>
-</div>
-
-<hr>
-<div id="esetek">
-  <h2>Esetek</h2>
-  <div class="row">
-    <div class="col">
-      Visszatartás
-    </div>
-    <div class="col">
-      Tettenérés
-    </div>
-    <div class="col">
-      Eltűnt személy felkutatása
-    </div>
-    <div class="col">
-      Jelzésadás
-    </div>
-    <div class="col">
-      Segítségnyújtás (fő)
-    </div>
-    <div class="col">
-      Egyéb eset
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{retention}} alkalom
-    </div>
-    <div class="col">
-      {{caught}} alkalom
-    </div>
-    <div class="col">
-      {{missing}} alkalom
-    </div>
-    <div class="col">
-      {{signal}} alkalom
-    </div>
-    <div class="col">
-      {{help}} fő
-    </div>
-    <div class="col">
-      {{other}} alkalom
-    </div>
-  </div>
-</div>
-
-<hr>
-<div id="egyeb">
-  <h2>Egyéb adatok</h2>
-  <div class="row">
+<div class="container">
 
 
-    <div class="col duty_cars">
-      Használt autók:
-    </div>
-    <div class="col">
-      Megtett kilométerek:
-    </div>
-    <div class="col">
-      Aktív napok
-    </div>
-  </div>
-  <div class="row">
-    <div class="col duty_cars">
-      {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
-        <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
-      </a>
-    </div>
-    <div class="col">
-      {{kms}} km  <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
-        <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
+  <div id="orak">
+    <h2>Szolgálati órák</h2>
+    <div class="row">
+      <div class="col">
+        Rendőrrel közös
       </div>
       <div class="col">
-        {{days}} nap <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+        Rendezvénybiztosítás
+      </div>
+      <div class="col">
+        Önálló (ebből Egyéb)
+      </div>
+      <div class="col">
+        Kutyás
+      </div>
+      <div class="col">
+        Összes
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{r}} óra
+      </div>
+      <div class="col">
+        {{re}} óra
+      </div>
+      <div class="col">
+        {{tot_o}} óra ({{e}} óra)
+      </div>
+      <div class="col">
+        {{k}} óra
+      </div>
+      <div class="col">
+        {{tot}} óra
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="esetek">
+    <h2>Esetek</h2>
+    <div class="row">
+      <div class="col">
+        Visszatartás
+      </div>
+      <div class="col">
+        Tettenérés
+      </div>
+      <div class="col">
+        Eltűnt személy felkutatása
+      </div>
+      <div class="col">
+        Jelzésadás
+      </div>
+      <div class="col">
+        Segítségnyújtás (fő)
+      </div>
+      <div class="col">
+        Egyéb eset
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{retention}} alkalom
+      </div>
+      <div class="col">
+        {{caught}} alkalom
+      </div>
+      <div class="col">
+        {{missing}} alkalom
+      </div>
+      <div class="col">
+        {{signal}} alkalom
+      </div>
+      <div class="col">
+        {{help}} fő
+      </div>
+      <div class="col">
+        {{other}} alkalom
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div id="egyeb">
+    <h2>Egyéb adatok</h2>
+    <div class="row">
+
+
+      <div class="col duty_cars">
+        Használt autók:
+      </div>
+      <div class="col">
+        Megtett kilométerek:
+      </div>
+      <div class="col">
+        Aktív napok
+      </div>
+    </div>
+    <div class="row">
+      <div class="col duty_cars">
+        {{cars}} gépjármű <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
           <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
         </a>
       </div>
+      <div class="col">
+        {{kms}} km  <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
+        </div>
+        <div class="col">
+          {{days}} nap <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+            <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row collapse" id='duty-collapse'>
+      <div id="duty_plates" class="col-sm">
+        <h3>Szolgálatokban használt gépjárművek:</h3>
+        <ol>
+          {% for plate in plates  %}
+          <li>{{plate}}</li>
+          {% endfor %}
+        </ol>
+      </div>
+      <div id="duty_dates" class="col-sm">
+        <h3>Aktív napok:</h3>
+        <ol>
+          {% for day in dates %}
+          <li>{{day}}</li>
+          {% endfor %}
+        </ol>
+      </div>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row collapse" id='duty-collapse'>
-    <div id="duty_plates" class="col-sm">
-      <h3>Szolgálatokban használt gépjárművek:</h3>
-      <ol>
-        {% for plate in plates  %}
-        <li>{{plate}}</li>
-        {% endfor %}
-      </ol>
-    </div>
-    <div id="duty_dates" class="col-sm">
-      <h3>Aktív napok:</h3>
-      <ol>
-        {% for day in dates %}
-        <li>{{day}}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  </div>
-</div>
-
 <div class="container footer-buttons">
   <a href="{% url 'time_sheet:member_detail' pk=pk %}" class="btn btn-primary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>

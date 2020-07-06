@@ -123,10 +123,11 @@ def duty_sum(request):
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
 
     members = models.Member.objects.all()
-    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id, tot = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
     persons = []
     dates =[]
+    id_name=[]
     for duty in duties:
         if str(duty.plate) not in plates and duty.plate != None:
             plates.append(str(duty.plate))
@@ -156,24 +157,27 @@ def duty_sum(request):
             signal +=1
         if duty.other:
             other +=1
+        tot += duty.hours
 
     for member in members:
-        if member.id_number:
-            id +=1
         if member.active:
             a += 1
-        if member.young:
-            y += 1
-        if member.dog:
-            d += 1
-        if member.motor:
-            m += 1
+            if member.id_number:
+                id +=1
+                id_name.append(member.first_name)
+            if member.young:
+                y += 1
+            if member.dog:
+                d += 1
+            if member.motor:
+                m += 1
 
     tot_o = o+e
     persons.sort()
     plates.sort()
+    one_hour = tot/id
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates, 'tot':tot, 'one_hour':format(one_hour, '.2f')}
 
     return render(request,'time_sheet/duty_sum.html',context=data)
 

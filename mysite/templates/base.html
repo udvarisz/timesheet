@@ -15,13 +15,14 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   {# master css #}
-  <link rel="stylesheet" href="{% static 'css/master.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
 
   <title>
     {% block title_block%}
     {# title extension if needed #}
     {% endblock %}
   </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
   <div class="container">

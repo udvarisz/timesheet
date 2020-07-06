@@ -16,36 +16,36 @@ Szolgálat
   <div id="orak">
     <h2>Szolgálati órák</h2>
     <div class="row">
-      <div class="col">
-        Rendőrrel közös
+      <div class="col-6 col-sm-6 col-md-2">
+        Rendőrrel közös:
       </div>
-      <div class="col">
-        Rendezvénybiztosítás
+      <div class="col-6 col-sm-6 col-md-2">
+        {{r}} óra
       </div>
-      <div class="col">
-        Önálló (ebből Egyéb)
+      <div class="col-6 col-sm-6 col-md-2">
+        Rendezvény:
       </div>
-      <div class="col">
-        Kutyás
+      <div class="col-6 col-sm-6 col-md-2">
+        {{re}} óra
       </div>
-      <div class="col">
-        Összes
+      <div class="col-6 col-sm-6 col-md-2">
+        Kutyás:
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
+        {{k}} óra
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        {{r}} óra
+      <div class="col-6 col-sm-6 col-md-3">
+        Önálló (ebből Egyéb):
       </div>
-      <div class="col">
-        {{re}} óra
-      </div>
-      <div class="col">
+      <div class="col-6 col-sm-6 col-md-3">
         {{tot_o}} óra ({{e}} óra)
       </div>
-      <div class="col">
-        {{k}} óra
+      <div class="col-6 col-sm-6 col-md-3">
+        Mindösszesen:
       </div>
-      <div class="col">
+      <div class="col-6 col-sm-6 col-md-3">
         {{tot}} óra
       </div>
     </div>
@@ -53,42 +53,42 @@ Szolgálat
 
   <hr>
   <div id="esetek">
-    <h2>Esetek</h2>
     <div class="row">
-      <div class="col">
-        Visszatartás
+      <div class="col-6 col-sm-6 col-md-2">
+        Visszatartás:
       </div>
-      <div class="col">
-        Tettenérés
+      <div class="col-6 col-sm-6 col-md-2">
+        {{retention}} alkalom
       </div>
-      <div class="col">
-        Eltűnt személy felkutatása
+      <div class="col-6 col-sm-6 col-md-2">
+        Tettenérés:
       </div>
-      <div class="col">
-        Jelzésadás
+      <div class="col-6 col-sm-6 col-md-2">
+        {{caught}} alkalom
       </div>
-      <div class="col">
-        Segítségnyújtás (fő)
+
+      <div class="col-6 col-sm-6 col-md-2">
+        Eltűnt személy:
       </div>
-      <div class="col">
-        Egyéb eset
+      <div class="col-6 col-sm-6 col-md-2">
+        {{missing}} alkalom
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        {{retention}} alkalom
-      </div>
-      <div class="col">
-        {{caught}} alkalom
-      </div>
-      <div class="col">
-        {{missing}} alkalom
+      <div class="col-6 col-sm-6 col-md-2">
+        Jelzésadás:
       </div>
       <div class="col">
         {{signal}} alkalom
       </div>
-      <div class="col">
+      <div class="col-6 col-sm-6 col-md-2">
+        Segítség-nyújtás:
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
         {{help}} fő
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
+        Egyéb:
       </div>
       <div class="col">
         {{other}} alkalom
@@ -100,34 +100,46 @@ Szolgálat
   <div id="egyeb">
     <h2>Egyéb adatok</h2>
     <div class="row">
-
-
-      <div class="col duty_cars">
+      <div class="col-6 col-sm-6 col-md-2 duty_cars">
         Használók száma:
       </div>
-      <div class="col">
-        Megtett kilométerek:
-      </div>
-      <div class="col">
-        Aktív napok
-      </div>
-    </div>
-    <div class="row">
-      <div class="col duty_cars">
+      <div class="col-6 col-sm-6 col-md-2 duty_cars">
         {{members}} fő <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
           <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="col">
+      <div class="col-6 col-sm-6 col-md-2">
+        Megtett kilométerek:
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
+        {{kms}} km  <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down print-none" aria-hidden="true"></i></a>
+        </div>
+      <div class="col-6 col-sm-6 col-md-2">
+        Aktív napok
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
+        {{days}} nap <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    {% comment %} <div class="row">
+      <div class="col-6 col-sm-6 col-md-2 duty_cars">
+        {{members}} fő <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
+          <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-6 col-sm-6 col-md-2">
         {{kms}} km  <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
           <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
         </div>
-        <div class="col">
+        <div class="col-6 col-sm-6 col-md-2">
           {{days}} nap <a data-toggle="collapse" data-target="#duty-collapse" aria-expanded="false" aria-controls="duty-collapes">
             <i class="fa fa-arrow-down print-none" aria-hidden="true"></i>
           </a>
         </div>
-      </div>
+      </div> {% endcomment %}
     </div>
   </div>
   <div class="container">

@@ -7,6 +7,8 @@ class MemberAdmin(admin.ModelAdmin):
 
 class DutyAdmin(admin.ModelAdmin):
     list_display=['date', 'member', 'duty_type', 'plate']
+    search_fields = ['date', 'member', 'duty_type', 'plate']
+    list_filter = ['date', 'member', 'duty_type', 'plate']
 
 class CarAdmin(admin.ModelAdmin):
     list_display=['car_plate', 'car_type', 'owner']

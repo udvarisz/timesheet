@@ -175,6 +175,7 @@ def duty_sum(request):
     tot_o = o+e
     persons.sort()
     plates.sort()
+    dates.sort()
     one_hour = tot/id
 
     data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates, 'tot':tot, 'one_hour':format(one_hour, '.2f')}
@@ -231,6 +232,7 @@ def member_sum(request):
 
     tot = o+r+re+k+e
     plates.sort()
+    dates.sort()
     tot_o = o+e
 
 
@@ -289,6 +291,7 @@ def plate_sum(request):
 
     tot = o+r+re+k+e
     members.sort()
+    dates.sort()
     tot_o = o+e
 
 

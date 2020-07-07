@@ -84,7 +84,7 @@ class DutyDetail(LoginRequiredMixin,DetailView):
 class CarCreate(LoginRequiredMixin,CreateView):
     login_url = '/login/'
     model = models.Car
-    fields = ('car_type', 'car_plate', 'fuel_type', 'ccm')
+    fields = ('owner','car_type', 'car_plate', 'fuel_type', 'ccm', 'color', 'stripped')
 
 class CarUpdate(LoginRequiredMixin,UpdateView):
     login_url = '/login/'

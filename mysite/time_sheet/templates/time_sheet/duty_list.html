@@ -99,28 +99,28 @@ Szolgálatok
     <div class="col-12 text-center">
       <hr>
       <span class="step-links">
-        {% if page_obj.has_previous %}
-          {% if page_obj.number == 2 %}
+        {% if duty_list.has_previous %}
+          {% if duty_list.number == 2 %}
           <a href="?page=1">&laquo; 1</a>
-          {% elif page_obj.number == 3 %}
+          {% elif duty_list.number == 3 %}
           <a href="?page=1">&laquo; 1</a>
-          <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+          <a href="?page={{ duty_list.previous_page_number }}">{{ duty_list.previous_page_number }}</a>
           {% else %}
           <a href="?page=1">&laquo; 1..</a>
-          <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+          <a href="?page={{ duty_list.previous_page_number }}">{{ duty_list.previous_page_number }}</a>
           {% endif %}
         {% endif %}
 
         <span class="current">
-          {{ page_obj.number }}
+          {{ duty_list.number }}
         </span>
 
-        {% if page_obj.has_next %}
-          {% if page_obj.next_page_number != page_obj.paginator.num_pages %}
-          <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">..{{ page_obj.paginator.num_pages }}  &raquo;</a>
+        {% if duty_list.has_next %}
+          {% if duty_list.next_page_number != duty_list.paginator.num_pages %}
+          <a href="?page={{ duty_list.next_page_number }}">{{ duty_list.next_page_number }}</a>
+          <a href="?page={{ duty_list.paginator.num_pages }}">..{{ duty_list.paginator.num_pages }}  &raquo;</a>
           {% else %}
-          <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}  &raquo;</a>
+          <a href="?page={{ duty_list.paginator.num_pages }}">{{ duty_list.paginator.num_pages }}  &raquo;</a>
           {% endif %}
         {% endif %}
       </span>

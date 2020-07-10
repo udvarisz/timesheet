@@ -85,13 +85,47 @@ Szolgálatok
 </div>
 
 <div class="container">
-  <div class="row member-list">
-    <h2>Legutóbbi szolgálatok:</h2>
-    <ol>
-      {% for duty in duty_list %}
-      <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% else %}Egyéb{% endif %}</a></li>
-      {% endfor %}
-    </ol>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <h2>Legutóbbi szolgálatok:</h2>
+    </div>
+    <div class="col-12 col-md-8">
+      <ol>
+        {% for duty in page_obj %}
+        <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% else %}Egyéb{% endif %}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="col-12 text-center">
+      <hr>
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          {% if page_obj.number == 2 %}
+          <a href="?page=1">&laquo; 1</a>
+          {% elif page_obj.number == 3 %}
+          <a href="?page=1">&laquo; 1</a>
+          <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+          {% else %}
+          <a href="?page=1">&laquo; 1..</a>
+          <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+          {% endif %}
+        {% endif %}
+
+        <span class="current">
+          {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+          {% if page_obj.next_page_number != page_obj.paginator.num_pages %}
+          <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">..{{ page_obj.paginator.num_pages }}  &raquo;</a>
+          {% else %}
+          <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}  &raquo;</a>
+          {% endif %}
+        {% endif %}
+      </span>
+    </div>
   </div>
 </div>
+
 {% endblock %}

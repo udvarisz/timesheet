@@ -51,7 +51,8 @@ class DutyUpdate(LoginRequiredMixin,UpdateView):
 class DutyList(LoginRequiredMixin,ListView):
     login_url = '/login/'
     model = models.Duty
-    queryset = models.Duty.objects.order_by('-date')[:10]
+    queryset = models.Duty.objects.order_by('-date')
+    paginate_by = 10
 
 
 class DutyFilterList(LoginRequiredMixin,ListView):

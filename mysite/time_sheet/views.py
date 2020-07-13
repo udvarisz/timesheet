@@ -124,7 +124,7 @@ def duty_sum(request):
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
 
     members = models.Member.objects.all()
-    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id, tot = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    o, r, re, k, e, er, kms, help, retention, caught, missing, signal, other, a, y, d, m, id, tot = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
     persons = []
     dates =[]
@@ -148,6 +148,8 @@ def duty_sum(request):
             k += duty.hours
         elif duty.duty_type == 'E':
             e += duty.hours
+        elif duty.duty_type == 'Er':
+            er += duty.hours
         if duty.retention:
             retention +=1
         if duty.caught:
@@ -179,7 +181,7 @@ def duty_sum(request):
     dates.sort()
     one_hour = tot/id
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates, 'tot':tot, 'one_hour':format(one_hour, '.2f')}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er':er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot_o':tot_o,'cars':len(plates),'person':len(persons),'a':a, 'y':y,'d':d,'m':m,'id':id, 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates,'tag':persons,'dates':dates, 'tot':tot, 'one_hour':format(one_hour, '.2f')}
 
     return render(request,'time_sheet/duty_sum.html',context=data)
 
@@ -197,7 +199,7 @@ def member_sum(request):
     member = request.GET.get('m')
     duties = models.Duty.objects.filter(date__range=[start_date, end_date ], member__exact=member).all()
 
-    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    o, r, re, k, e, er, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
     dates =[]
 
@@ -220,6 +222,8 @@ def member_sum(request):
             k += duty.hours
         elif duty.duty_type == 'E':
             e += duty.hours
+        elif duty.duty_type == 'Er':
+            er += duty.hours
         if duty.retention:
             retention +=1
         if duty.caught:
@@ -231,14 +235,14 @@ def member_sum(request):
         if duty.other:
             other +=1
 
-    tot = o+r+re+k+e
+    tot = o+r+re+k+e+er
     plates.sort()
     dates.sort()
     tot_o = o+e
 
 
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk, 'member':member}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er': er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk, 'member':member}
 
     return render(request,'time_sheet/member_sum.html',context=data)
 
@@ -256,7 +260,7 @@ def plate_sum(request):
     plate = request.GET.get('p')
     duties = models.Duty.objects.filter(date__range=[start_date, end_date ], plate__exact=plate).all()
 
-    o, r, re, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    o, r, re, er, k, e, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     members = []
     dates =[]
 
@@ -279,6 +283,8 @@ def plate_sum(request):
             k += duty.hours
         elif duty.duty_type == 'E':
             e += duty.hours
+        elif duty.duty_type == 'Er':
+            er += duty.hours
         if duty.retention:
             retention +=1
         if duty.caught:
@@ -290,13 +296,43 @@ def plate_sum(request):
         if duty.other:
             other +=1
 
-    tot = o+r+re+k+e
+    tot = o+r+re+k+e+er
     members.sort()
     dates.sort()
     tot_o = o+e
 
 
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'members':len(members), 'start':start_date, 'end':end_date,'days':len(dates),'dates':dates,'tot_o':tot_o,'pk':pk, 'car':car, 'users':members}
+    data = {'o':o,'r':r,'re':re,'k':k, 'er':er, 'e':e, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'members':len(members), 'start':start_date, 'end':end_date,'days':len(dates),'dates':dates,'tot_o':tot_o,'pk':pk, 'car':car, 'users':members}
 
     return render(request,'time_sheet/car_sum.html',context=data)
+
+def duty_table(request):
+    # if request.GET.get('s') != "":
+    #     start_date = request.GET.get('s')
+    # else:
+    #     start_date = datetime.date.today().replace(day=1)
+    #
+    # if request.GET.get('e') != "":
+    #     end_date = request.GET.get('e')
+    # else:
+    #     end_date = datetime.date.today()
+    #     #script: SELECT "time_sheet_duty"."date", "time_sheet_member"."first_name", "time_sheet_member"."last_name", "time_sheet_duty"."duty_type", "time_sheet_duty"."hours" FROM "time_sheet_duty" INNER JOIN "time_sheet_member" ON ("time_sheet_duty"."member_id" = "time_sheet_member"."id") WHERE "time_sheet_member"."active" = 1 GROUP BY "time_sheet_duty"."date","time_sheet_member"."id", "time_sheet_duty"."duty_type" ORDER BY "time_sheet_duty"."date"
+    # duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
+    # dates =[]
+    #
+    # for duty in duties:
+    #     if str(duty.date) not in dates:
+    #         dates.append(str(duty.date))
+    #
+    # dates.sort()
+    #
+    # data = {'start':start_date, 'end':end_date}
+    # return render(request,'time_sheet/duty_table.html',context=data)
+    model = models.Duty
+    field_names = list(model._meta.get_fields())
+    titles = [f.verbose_name for f in field_names]
+    field_Names = [f.name for f in field_names]
+    data = [[getattr(ins, name) for name in field_names]
+            for ins in model.objects.prefetch_related().all()]
+    return render(request, 'duty_table.html', context={'field_names': field_names, 'data': data})

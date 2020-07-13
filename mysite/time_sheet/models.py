@@ -35,7 +35,7 @@ class Member(models.Model):
 
 
 class Duty(models.Model):
-    s_types = (('O', 'Önálló'),('R','Rendőrrel közös'),('Re','Rendezvénybiztosítás'),('K', 'Kutyás'),('E', 'Egyéb'))
+    s_types = (('O', 'Önálló'),('R','Rendőrrel közös'),('Re','Rendezvénybiztosítás'),('K', 'Kutyás'),('Er','Egyéb rendvédelmi szervvel'), ('E', 'Egyéb'))
 
     member = models.ForeignKey('time_sheet.Member', on_delete = models.SET_DEFAULT, verbose_name= ('Szolgálatot ellátó személy'), default=5)
 

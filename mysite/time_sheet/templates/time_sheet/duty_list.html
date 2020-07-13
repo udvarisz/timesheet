@@ -68,6 +68,7 @@ Szolgálatok
               <option value="r">Rendőrrel közös</option>
               <option value="re">Rendezvénybiztosítás</option>
               <option value="k">Kutyás</option>
+              <option value="er">Egyéb rendvédelmi szervvel</option>
               <option value="e">Egyéb</option>
             </select>
           </div>
@@ -92,7 +93,7 @@ Szolgálatok
     <div class="col-12 col-md-8">
       <ol>
         {% for duty in duty_list %}
-        <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% else %}Egyéb{% endif %}</a></li>
+        <li><a href="{% url 'time_sheet:duty_detail' pk=duty.pk %}"> {{duty.date}} - {{duty.member}} - {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% elif duty.duty_type == "Er" %}Egyéb rendvédelmi szervvel{% else %}Egyéb{% endif %}</a></li>
         {% endfor %}
       </ol>
     </div>

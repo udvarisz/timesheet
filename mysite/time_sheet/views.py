@@ -106,14 +106,14 @@ class CarDetail(LoginRequiredMixin,DetailView):
 
 @login_required
 def duty_sum(request):
-    try:
-        start_date = request.POST['s']
-    except KeyError:
+    if request.POST.get('s') != "":
+        start_date = request.POST.get('s')
+    else:
         start_date = datetime.date.today().replace(day=1)
 
-    try:
-        end_date = request.POST['e']
-    except KeyError:
+    if request.POST.get('e') != "":
+        end_date = request.POST.get('e')
+    else:
         end_date = datetime.date.today()
 
     if request.POST.get('t') != "":
@@ -186,25 +186,25 @@ def duty_sum(request):
 
 @login_required
 def member_sum(request):
-    try:
-        start_date = request.POST['s']
-    except KeyError:
+    if request.POST.get('s') != "":
+        start_date = request.POST.get('s')
+    else:
         start_date = datetime.date.today().replace(day=1)
 
-    try:
-        end_date = request.POST['e']
-    except KeyError:
+    if request.POST.get('e') != "":
+        end_date = request.POST.get('e')
+    else:
         end_date = datetime.date.today()
-    member = request.POST['m']
-    duties = models.Duty.objects.filter(date__range=[start_date, end_date ], member__exact=member).all()
 
+    member = request.POST.get('m')
+    duties = models.Duty.objects.filter(date__range=[start_date, end_date ], member__exact=member).all()
+    first = models.Member.objects.filter(id__exact=member).values_list('first_name', flat=True)
+    last = models.Member.objects.filter(id__exact=member).values_list('last_name', flat=True)
     o, r, re, k, e, er, kms, help, retention, caught, missing, signal, other, a, y, d, m, id = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     plates = []
     dates =[]
-
+    pk = member
     for duty in duties:
-        member = str(duty.member)
-        pk=duty.member.pk
         if str(duty.plate) not in plates and duty.plate != None:
             plates.append(str(duty.plate))
         if str(duty.date) not in dates:
@@ -241,20 +241,20 @@ def member_sum(request):
 
 
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er': er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk, 'member':member}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er': er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk,'first':first[0],'last':last[0]}
 
     return render(request,'time_sheet/member_sum.html',context=data)
 
 @login_required
 def plate_sum(request):
-    try:
-        start_date = request.POST['s']
-    except KeyError:
+    if request.POST.get('s') != "":
+        start_date = request.POST.get('s')
+    else:
         start_date = datetime.date.today().replace(day=1)
 
-    try:
-        end_date = request.POST['e']
-    except KeyError:
+    if request.POST.get('e') != "":
+        end_date = request.POST.get('e')
+    else:
         end_date = datetime.date.today()
     plate = request.POST['p']
     duties = models.Duty.objects.filter(date__range=[start_date, end_date ], plate__exact=plate).all()
@@ -327,8 +327,15 @@ def plate_sum(request):
 #     return render(request,'time_sheet/duty_table.html',context=data)
 
 def duty_member_sum (request):
-    start_date = request.POST['s']
-    end_date = request.POST['e']
+    if request.POST.get('s') != "":
+        start_date = request.POST.get('s')
+    else:
+        start_date = datetime.date.today().replace(day=1)
+
+    if request.POST.get('e') != "":
+        end_date = request.POST.get('e')
+    else:
+        end_date = datetime.date.today()
     member = request.POST['m']
 
     duties = models.Duty.objects.filter(date__range=[start_date, end_date ], member__exact=member).all()

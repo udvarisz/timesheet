@@ -49,12 +49,12 @@ Szolgálatok
       </div>
       <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_sum' %}" method="post" id="myform" autocomplete="off">
             {% csrf_token %}
             <div class="row justify-content-center noborder">
               <div class="col-md-auto text-center">
-                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
-                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?" required>
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?" required>
               </div>
             </div>
           </div>

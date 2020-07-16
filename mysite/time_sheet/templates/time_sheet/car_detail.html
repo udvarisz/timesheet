@@ -17,7 +17,7 @@ Tagok
       </div>
       <div class="row noborder">
         <div class="col-md-auto">
-          <form class="form-inline" action="{% url 'time_sheet:car_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline" action="{% url 'time_sheet:car_sum' %}" method="POST" autocomplete="off">
             {% csrf_token %}
             <input type="hidden" name="p" value="{{car.pk}}">
             <div class="row noborder">

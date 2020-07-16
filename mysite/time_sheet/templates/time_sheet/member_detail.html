@@ -22,7 +22,7 @@ Tagok
       </div>
       <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline justify-content-center" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:member_sum' %}" method="post" autocomplete="off">
             {% csrf_token %}
             <input type="hidden" name="m" value="{{member.pk}}">
             <div class="row justify-content-center noborder">
@@ -51,7 +51,7 @@ Tagok
       </div>
       <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_member_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_member_sum' %}" method="post" autocomplete="off">
             {% csrf_token %}
             <input type="hidden" name="m" value="{{member.pk}}">
             <div class="row justify-content-center noborder">

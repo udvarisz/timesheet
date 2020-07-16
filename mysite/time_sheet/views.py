@@ -116,10 +116,10 @@ def duty_sum(request):
     except KeyError:
         end_date = datetime.date.today()
 
-    try:
-        type = request.POST['t']
+    if request.POST.get('t') != "":
+        type = request.POST.get('t')
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ], duty_type__exact=type).all()
-    except KeyError:
+    else:
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
 
     members = models.Member.objects.all()

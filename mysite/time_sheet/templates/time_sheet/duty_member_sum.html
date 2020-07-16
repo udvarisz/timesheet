@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Szolgálat
+{% endblock %}
+{% block content_block %}
+
+
+<div class='jumbotron'>
+  <h1>Szolgálatok összesítése</h1>
+  <h3>{{last}} {{first}}</h3>
+  <p>{{start}} - {{end}}</p>
+</div>
+
+<div class="container">
+
+  {% for duty in duties  %}
+  <div class="row">
+    <div class="col-4">
+      {{duty.date}}
+    </div>
+    <div class="col-4">
+      {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% elif duty.duty_type == "Er" %}Egyéb rendvédelmi szervvel{% else %}Egyéb{% endif %}
+    </div>
+    <div class="col-4">
+      {{duty.hours}} óra
+    </div>
+  </div>
+  {% endfor %}
+  <div class="row">
+    <div class="col-8">
+      <strong>Összesen:</strong>
+    </div>
+    <div class="col-4">
+      <strong>{{hours}}  óra</strong>
+    </div>
+
+  </div>
+</div>
+<div class="container footer-buttons">
+  <a href="{% url 'time_sheet:member_detail' pk=pk %}" class="btn btn-primary d-print-none">Vissza</a>
+  <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
+</div>
+
+
+
+
+
+{% endblock %}

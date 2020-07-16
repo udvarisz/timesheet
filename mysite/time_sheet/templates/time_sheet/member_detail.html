@@ -7,41 +7,73 @@ Tagok
   <h1>{{member.last_name}}  {{member.first_name}} adatai</h1>
 </div>
 
+
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center noborder">
+    <h2>Szolgálatok szűrése</h2>
+  </div>
+  <div class="row justify-content-center noborder">
+    <div class="col-md-6">
       <div class="row justify-content-center noborder">
-        <div class="col-12">
-          <h2>{{member.first_name}} szolgálatainak összesítése</h2>
+        <div class="col-md-auto text-center">
+          <h2>Összesített lista</h2>
+          <p>Jelöld ki az intervallumot:</p>
         </div>
       </div>
-      <div class="row noborder">
+      <div class="row justify-content-center noborder">
         <div class="col-md-auto">
-          <form class="form-inline" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:member_sum' %}" method="get" autocomplete="off">
             {% csrf_token %}
             <input type="hidden" name="m" value="{{member.pk}}">
-            <div class="row noborder">
-              <div class="col-md-auto">
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto text-center">
                 <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
                 <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
               </div>
             </div>
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto">
+                <p class="szures-btn" align="center">
+                  <input type="submit" value="Szűrés" class="btn btn-primary">
+                </p>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="row noborder">
-          <div class="col-12">
-            <p class="szures-btn">
-              <input type="submit" value="Összesítés" class="btn btn-primary">
-            </p>
-          </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row justify-content-center noborder">
+        <div class="col-md-auto text-center">
+          <h2>Részletes lista</h2>
+          <p>Jelöld ki az intervallumot:</p>
+        </div>
+      </div>
+      <div class="row justify-content-center noborder">
+        <div class="col-md-auto">
+          <form class="form-inline justify-content-center" action="{% url 'time_sheet:duty_member_sum' %}" method="get" autocomplete="off">
+            {% csrf_token %}
+            <input type="hidden" name="m" value="{{member.pk}}">
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto text-center">
+                <input class="form-control datepicker" type="datetime" name="s" placeholder="Mikortól?">
+                <input class="form-control datepicker" type="datetime" name="e" placeholder="Meddig?">
+              </div>
+            </div>
+            <div class="row justify-content-center noborder">
+              <div class="col-md-auto col-sm-auto">
+                <p class="szures-btn" align="center">
+                  <input type="submit" value="Szűrés" class="btn btn-primary">
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container">
-
-
   <div class="row member-list">
     <div class="row noborder">
       <div class="col-12">

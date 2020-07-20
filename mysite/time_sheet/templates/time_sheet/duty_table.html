@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Szolgálat
+{% endblock %}
+{% block content_block %}
+
+
+<div class='jumbotron'>
+  <h1>Szolgálatok napi bontása</h1>
+  <h3>Hegyőrség Törökbálint Polgárőr Egyesület</h3>
+  <p>{{start}} - {{end}}</p>
+</div>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-3">
+      <strong>Dátum</strong>
+    </div>
+    <div class="col-3">
+      <strong>Név</strong>
+    </div>
+    <div class="col-3">
+      <strong>Szolgálat típusa</strong>
+    </div>
+    <div class="col-3">
+      <strong>Óraszám</strong>
+    </div>
+  </div>
+  {% for duty in duties  %}
+  <div class="row">
+    <div class="col-3">
+      {{duty.date}}
+    </div>
+    <div class="col-3">
+      <form class="form-inline" action="{% url 'time_sheet:duty_member_sum' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="s" value="{{start}}">
+        <input type="hidden" name="e" value="{{end}}">
+        <input type="hidden" name="m" value="{{duty.member_id}}">
+        <input type="submit" value="{{duty.last_name}} {{duty.first_name}}" class="btn btn-link">
+      </form>
+
+    </div>
+    <div class="col-3">
+      {% if duty.duty_type == "O" %}Önálló {% elif duty.duty_type == "R" %} Rendőrrel közös {% elif duty.duty_type == "Re" %}Rendezvénybiztosítás{% elif duty.duty_type == "K" %}Kutyás{% elif duty.duty_type == "Er" %}Egyéb rendvédelmi szervvel{% else %}Egyéb{% endif %}
+    </div>
+    <div class="col-3">
+      {{duty.hours}} óra
+    </div>
+  </div>
+  {% endfor %}
+  <div class="row">
+    <div class="col-9">
+      <strong>Összesen:</strong>
+    </div>
+    <div class="col-3">
+      <strong>{{hours}}  óra</strong>
+    </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="container footer-buttons">
+  <form class="form-inline" action="{% url 'time_sheet:duty_sum' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="s" value="{{start}}">
+    <input type="hidden" name="e" value="{{end}}">
+    <input type="hidden" name="t" value="">
+    <input type="submit" value="Összesített lista" class="btn btn-primary d-print-none">
+  </form>
+  <hr>
+  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-secondary d-print-none">Szolgálatok</a>
+  <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
+</div>
+{% endblock %}

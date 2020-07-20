@@ -78,6 +78,11 @@ body {
   -o-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
 }
+.btn-link{
+  font-size: 1em;
+  text-align: left !important;
+  padding-left: 0px !important;
+}
 .container {margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -181,7 +186,7 @@ h1, h2, h3 {font-size: 1.4rem}
     margin-top: 15px;
     margin-bottom: 15px;
   }
-  .btn-primary, .btn-warning  {
+  .btn-primary, .btn-warning, .bnt-link  {
     font-size: 0.85em;
     letter-spacing: 2px;
   }

@@ -241,7 +241,7 @@ def member_sum(request):
 
 
 
-    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er': er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk,'first':first[0],'last':last[0]}
+    data = {'o':o,'r':r,'re':re,'k':k, 'e':e, 'er': er, 'kms':kms, 'help':help, 'retention':retention, 'caught':caught, 'missing':missing, 'signal':signal, 'other':other, 'tot':tot,'cars':len(plates), 'start':start_date, 'end':end_date,'days':len(dates),'plates':plates, 'dates':dates,'tot_o':tot_o,'pk':pk,'first':first[0],'last':last[0],'member':member}
 
     return render(request,'time_sheet/member_sum.html',context=data)
 
@@ -306,25 +306,27 @@ def plate_sum(request):
 
     return render(request,'time_sheet/car_sum.html',context=data)
 
-# def duty_table(request):
-#     if request.GET.get('s') != "":
-#         start_date = request.GET.get('s')
-#     else:
-#         start_date = datetime.date.today().replace(day=1)
-#
-#     if request.GET.get('e') != "":
-#         end_date = request.GET.get('e')
-#     else:
-#         end_date = datetime.date.today()
-#
-#     duties = models.Duty.objects.raw('SELECT "time_sheet_duty"."date", "time_sheet_member"."first_name", "time_sheet_member"."last_name", "time_sheet_duty"."duty_type", "time_sheet_duty"."hours" FROM "time_sheet_duty" INNER JOIN "time_sheet_member" ON ("time_sheet_duty"."member_id" = "time_sheet_member"."id") WHERE "time_sheet_member"."active" = 1 AND "time_sheet_duty"."date" BETWEEN %s  AND %s GROUP BY "time_sheet_duty"."date","time_sheet_member"."id", "time_sheet_duty"."duty_type" ORDER BY "time_sheet_duty"."date"',[start_date, end_date])
-#
-#     # duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()
-#
-#
-#
-#     data = {'start':start_date, 'end':end_date, 'duties':duties}
-#     return render(request,'time_sheet/duty_table.html',context=data)
+def duty_table(request):
+    if request.POST.get('s') != "":
+        start_date = request.POST.get('s')
+    else:
+        start_date = datetime.date.today().replace(day=1)
+
+    if request.POST.get('e') != "":
+        end_date = request.POST.get('e')
+    else:
+        end_date = datetime.date.today()
+
+    duties = models.Duty.objects.raw('SELECT "time_sheet_duty"."date", "time_sheet_duty"."id", "time_sheet_member"."first_name", "time_sheet_member"."last_name", "time_sheet_duty"."duty_type", "time_sheet_duty"."hours", "time_sheet_duty"."member_id" FROM "time_sheet_duty" INNER JOIN "time_sheet_member" ON ("time_sheet_duty"."member_id" = "time_sheet_member"."id") WHERE "time_sheet_member"."active" = 1 AND "time_sheet_duty"."date" BETWEEN %s  AND %s GROUP BY "time_sheet_duty"."date","time_sheet_member"."id", "time_sheet_duty"."duty_type" ORDER BY "time_sheet_duty"."date"',[start_date, end_date])
+
+    hours = 0
+
+    for duty in duties:
+        hours += duty.hours
+
+
+    data = {'start':start_date, 'end':end_date, 'duties':duties, 'hours':hours}
+    return render(request,'time_sheet/duty_table.html',context=data)
 
 def duty_member_sum (request):
     if request.POST.get('s') != "":

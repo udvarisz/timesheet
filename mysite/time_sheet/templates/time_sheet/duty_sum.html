@@ -84,7 +84,7 @@ Szolgálat
         Egyéb szervvel:
       </div>
       <div class="col-6 col-sm-6 col-md-2">
-        {{er}} óra 
+        {{er}} óra
       </div>
       <div class="col-6 col-sm-6 col-md-2">
         Mindösszesen:
@@ -222,8 +222,15 @@ Szolgálat
     </div>
   </div>
 </div>
-<div class="container footer-buttons">
-  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-primary d-print-none">Vissza</a>
+<div class="container footer-buttons print-none">
+  <form class="form-inline" action="{% url 'time_sheet:duty_table' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="s" value="{{start}}">
+    <input type="hidden" name="e" value="{{end}}">
+    <input type="submit" value="Naponkénti bontás" class="btn btn-primary d-print-none">
+  </form>
+  <hr>
+  <a href="{% url 'time_sheet:duty_list' %}" class="btn btn-secondary d-print-none">Vissza</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
 
 </div>

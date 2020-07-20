@@ -157,8 +157,16 @@ Szolgálat
     </div>
   </div>
 </div>
-<div class="container footer-buttons">
-  <a href="{% url 'time_sheet:member_detail' pk=pk %}" class="btn btn-primary d-print-none">Vissza</a>
+<div class="container footer-buttons print-none">
+  <form class="form-inline" action="{% url 'time_sheet:duty_member_sum' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="s" value="{{start}}">
+    <input type="hidden" name="e" value="{{end}}">
+    <input type="hidden" name="m" value="{{member}}">
+    <input type="submit" value="Részletes lista" class="btn btn-primary d-print-none">
+  </form>
+  <hr>
+  <a href="{% url 'time_sheet:member_detail' pk=pk %}" class="btn btn-secondary d-print-none">Tag Adatai</a>
   <button onclick="window.print()" class="btn btn-warning d-print-none">Nyomtatás</button>
 </div>
 

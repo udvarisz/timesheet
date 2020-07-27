@@ -7,18 +7,22 @@ Login
 
 {% block content_block %}
 
+{% if user.is_authenticated %}
+<div class="container">
+  <p>Üdvözöllek {{user.username}}!</p>
+</div>
+{% else %}
 <div class="container-login100">
   <div class="wrap-login100 p-b-160 p-t-50">
-  <h1 class="">Bejelentkezés</h1>
-  <form method="post" class="login-group">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-    <input type="submit" class="btn btn-primary" value="Login">
-    {% endbuttons %}
-  </form>
-
+    <h1 class="">Bejelentkezés</h1>
+    <form method="post" class="login-group">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+      <input type="submit" class="btn btn-primary" value="Login">
+      {% endbuttons %}
+    </form>
+  </div>
 </div>
-</div>
-
+{% endif %}
 {% endblock %}

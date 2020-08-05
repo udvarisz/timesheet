@@ -46,7 +46,7 @@ class DutyCreate(LoginRequiredMixin,CreateView):
 class DutyUpdate(LoginRequiredMixin,UpdateView):
     login_url = '/login/'
     model = models.Duty
-    form_class = forms.DutyForm
+    form_class = forms.DutyUpdateForm
 
 class DutyList(LoginRequiredMixin,ListView):
     login_url = '/login/'

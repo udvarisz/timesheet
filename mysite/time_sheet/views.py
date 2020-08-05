@@ -117,7 +117,7 @@ def duty_sum(request):
         end_date = datetime.date.today()
 
     if request.POST.get('t') != "":
-        type = request.POST.get('t')
+        type = request.POST.get('t').capitalize()
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ], duty_type__exact=type).all()
     else:
         duties = models.Duty.objects.filter(date__range=[start_date, end_date ]).all()

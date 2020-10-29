@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title_block %}
+Tagok
+{% endblock %}
+{% block content_block %}
+<div class='jumbotron'>
+  <h1>Összes tag</h1>
+</div>
+<div class="container">
+  <div class="container">
+    <div class="row member-list">
+      Aktív tagok:
+      <ol>
+        {% for member in member_list %}
+          {% if member.active %}
+            <li><a href="{% url 'time_sheet:member_detail' pk=member.pk %}">
+              {{member.last_name}} {{member.first_name}} </a></li>
+          {% endif %}
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="row member-list">
+      Kilépett tagok:
+      <ol>
+      {% for member in member_list %}
+        {% if not member.active %}
+          <li><a href="{% url 'time_sheet:member_detail' pk=member.pk %}">
+            {{member.last_name}} {{member.first_name}} </a></li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+    </div>
+  </div>
+  <span class="col btn-warning">
+    <a href="{% url 'time_sheet:member_list' %}" class="btn btn-warning">Vissza az aktív tagokhoz</a>
+  </span>
+</div>
+{% endblock %}

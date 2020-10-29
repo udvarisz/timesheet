@@ -4,7 +4,7 @@ Tagok
 {% endblock %}
 {% block content_block %}
 <div class='jumbotron'>
-  <h1>Tagok listája</h1>
+  <h1>Aktív tagok listája</h1>
 </div>
 
 <div class="container">
@@ -23,5 +23,8 @@ Tagok
       </ol>
     </div>
   </div>
+  <span class="col btn-warning">
+    <a href="{% url 'time_sheet:all_member' %}" class="btn btn-warning">Összes tag megjelenítése</a>
+  </span>
 </div>
 {% endblock %}

@@ -25,4 +25,5 @@ urlpatterns = [
     path('list_car/',views.CarList.as_view(), name='car_list'),
     path('car_detail/<int:pk>/', views.CarDetail.as_view(), name='car_detail'),
     path('car_sum/',views.plate_sum, name='car_sum'),
+    path('all_member/',views.all_member, name='all_member'),
     ]

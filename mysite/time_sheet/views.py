@@ -29,6 +29,11 @@ class MemberList(LoginRequiredMixin,ListView):
     def get_queryset(self):
         return super().get_queryset().exclude(active=False)
 
+class AllMember(LoginRequiredMixin,ListView):
+    login_url = '/login/'
+    model = models.Member
+    ordering = ['last_name']
+
 class MemberDetail(LoginRequiredMixin,DetailView):
     login_url = '/login/'
     model = models.Member
@@ -106,6 +111,13 @@ class CarDetail(LoginRequiredMixin,DetailView):
 #####
 #querys
 #####
+
+@login_required
+def all_member(request):
+    member_list = models.Member.objects.order_by('last_name')
+    user_dict = {"member_list":member_list}
+    return render(request,'time_sheet/all_member.html',context=user_dict)
+
 
 @login_required
 def duty_sum(request):

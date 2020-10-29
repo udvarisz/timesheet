@@ -26,6 +26,9 @@ class MemberList(LoginRequiredMixin,ListView):
     model = models.Member
     ordering = ['last_name']
 
+    def get_queryset(self):
+        return super().get_queryset().exclude(active=False)
+
 class MemberDetail(LoginRequiredMixin,DetailView):
     login_url = '/login/'
     model = models.Member

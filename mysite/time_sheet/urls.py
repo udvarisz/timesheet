@@ -10,6 +10,7 @@ urlpatterns = [
     path('update_member/<int:pk>/',views.MemberUpdate.as_view(), name='member_update'),
     path('member_detail/<int:pk>/', views.MemberDetail.as_view(), name='member_detail'),
     path('member_list/',views.MemberList.as_view(), name='member_list'),
+    path('all_member/',views.all_member, name='all_member'),
     path('member_delete/<int:pk>/', views.MemberDelete.as_view(), name='member_delete'),
     path('member_sum/',views.member_sum, name='member_sum'),
     path('new_duty/',views.DutyCreate.as_view(), name='duty_create'),
@@ -25,5 +26,5 @@ urlpatterns = [
     path('list_car/',views.CarList.as_view(), name='car_list'),
     path('car_detail/<int:pk>/', views.CarDetail.as_view(), name='car_detail'),
     path('car_sum/',views.plate_sum, name='car_sum'),
-    path('all_member/',views.all_member, name='all_member')
+
     ]

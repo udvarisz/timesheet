@@ -88,7 +88,11 @@ Szolgálatok
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-4">
+      {% if page_obj.has_next %}
       <h2>Legutóbbi szolgálatok:</h2>
+      {% else %}
+      <h2>Kiválasztott szolgálatok:</h2>
+      {% endif %}
     </div>
     <div class="col-12 col-md-8">
       <ol>

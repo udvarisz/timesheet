@@ -46,10 +46,21 @@ class DutyCreate(LoginRequiredMixin,CreateView):
     model = models.Duty
     form_class = forms.DutyForm
 
+    def get_form(self, *args, **kwargs):
+        form = super(DutyCreate, self).get_form(*args, **kwargs)
+        form.fields['member'].queryset = models.Member.objects.filter(active=True)
+        return form
+
+
 class DutyUpdate(LoginRequiredMixin,UpdateView):
     login_url = '/login/'
     model = models.Duty
     form_class = forms.DutyUpdateForm
+
+    def get_form(self, *args, **kwargs):
+        form = super(DutyUpdate, self).get_form(*args, **kwargs)
+        form.fields['member'].queryset = models.Member.objects.filter(active=True)
+        return form
 
 class DutyList(LoginRequiredMixin,ListView):
     login_url = '/login/'
@@ -61,7 +72,7 @@ class DutyList(LoginRequiredMixin,ListView):
 class DutyFilterList(LoginRequiredMixin,ListView):
     login_url = '/login/'
     model = models.Duty
-    paginate_by = 10
+    # paginate_by = 10
     ordering = ['date']
 
     def get_queryset(self):

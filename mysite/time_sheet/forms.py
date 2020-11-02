@@ -1,5 +1,5 @@
 from django import forms
-from time_sheet.models import Duty
+from time_sheet.models import Duty, Member
 
 class DutyForm(forms.ModelForm):
 
@@ -12,6 +12,7 @@ class DutyForm(forms.ModelForm):
         'plate':forms.RadioSelect(),
         'commander':forms.CheckboxInput(attrs={'class':'duty commander'}),
         }
+
 
 class DutyUpdateForm(forms.ModelForm):
 

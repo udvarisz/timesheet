@@ -6,7 +6,7 @@ class MemberAdmin(admin.ModelAdmin):
     list_display=['last_name','first_name','pmpsz_number']
 
 class DutyAdmin(admin.ModelAdmin):
-    list_display=['date', 'member', 'duty_type', 'plate']
+    list_display=['date', 'member', 'duty_type', 'plate', 'kms']
     search_fields = ['date', 'member', 'duty_type', 'plate']
     list_filter = ['date', 'member', 'duty_type', 'plate']
 
